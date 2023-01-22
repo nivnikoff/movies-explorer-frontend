@@ -1,0 +1,79 @@
+.student {
+  padding: 110px 70px 100px;
+}
+
+.student__title {
+  padding-bottom: 23px;
+  margin: 0;
+  border-bottom: 1px solid #DADADA;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+}
+
+.student__content {
+  padding-top: 66px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.student__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sudent__bio {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.student__name {
+  padding-bottom: 18px;
+  margin: 0;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 58px;
+  letter-spacing: -0.04em;
+}
+
+.student__description {
+  padding-bottom: 26px;
+  margin: 0;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20px;
+  mix-blend-mode: normal;
+}
+
+.student__about {
+  padding: 0;
+  margin: 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  mix-blend-mode: normal;
+}
+
+.student__link {
+  padding: 0;
+  margin: 0;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: white;
+  transition: opacity .5s linear;
+}
+
+.student__link:hover {
+  opacity: 0.6;
+}
+
+.student__avatar {
+  max-height: 327px;
+  max-width: 270px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
