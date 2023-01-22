@@ -1,6 +1,6 @@
 import Header from '../Header/Header';
 import Promo from '../Promo/Promo';
-// import NavTab from '../NavTab';
+import NavTab from '../NavTab/NavTab';
 // import AboutProject from '../AboutProject';
 // import Techs from '../Techs';
 // import AboutMe from '../AboutMe';
@@ -13,8 +13,8 @@ function Main() {
       <Header loggedIn = {false} />
       <main>
         <Promo/>
-        {/* <NavTab/>
-        <AboutProject/>
+        <NavTab/>
+        {/* <AboutProject/>
         <Techs/>
         <AboutMe/>
         <Portfolio/> */}
