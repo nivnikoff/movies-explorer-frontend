@@ -1,0 +1,90 @@
+.project {
+  padding: 110px 70px;
+  box-sizing: border-box;
+}
+
+.project__title {
+  padding-bottom: 23px;
+  margin: 0;
+  border-bottom: 1px solid #DADADA;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+}
+
+.project__description {
+  padding: 70px 0 110px;
+  margin: 0;
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.project__description-info {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.project__description-title {
+  padding: 0;
+  margin: 0;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.project__description-text {
+  padding: 0;
+  margin: 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.project__timeline {
+  padding: 0 0 110px;
+  margin: 0;
+  display: flex;
+}
+
+.project__timeline_backend {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.project__timeline_frontend {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.project__timeline-duration {
+    padding: 9px;
+    margin: 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+  }
+
+.project__timeline-duration_green {
+  background-color: #3DDC84;
+  color: black;
+}
+
+.project__timeline-duration_grey {
+  background-color: #303030;
+}
+
+.project__timeline-title {
+  margin: 0;
+  color: #8B8B8B;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+}

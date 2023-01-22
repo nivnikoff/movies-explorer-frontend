@@ -1,7 +1,7 @@
 import Header from '../Header/Header';
 import Promo from '../Promo/Promo';
 import NavTab from '../NavTab/NavTab';
-// import AboutProject from '../AboutProject';
+import AboutProject from '../AboutProject/AboutProject';
 // import Techs from '../Techs';
 // import AboutMe from '../AboutMe';
 // import Portfolio from '../Portfolio';
@@ -14,8 +14,8 @@ function Main() {
       <main>
         <Promo/>
         <NavTab/>
-        {/* <AboutProject/>
-        <Techs/>
+        <AboutProject/>
+        {/* <Techs/>
         <AboutMe/>
         <Portfolio/> */}
       </main>
