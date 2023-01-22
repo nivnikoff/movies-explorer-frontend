@@ -7,19 +7,19 @@ function Portfolio() {
       <h2 className="portfolio__title">Портфолио</h2>
       <ul className="portfolio__list">
         <li className="portfolio__list-item">
-          <a className="portfolio__link" href="https://github.com/nivnikoff/how-to-learn">
+          <a className="portfolio__link" href="https://github.com/nivnikoff/how-to-learn" target="_blank" rel="noreferrer">
             <p className="portfolio__link-text">Статичный сайт</p>
             <img className="portfolio__link-img" src={arrow} alt="How to learn"></img>
           </a>
         </li>
         <li className="portfolio__list-item">
-          <a className="portfolio__link" href="https://github.com/nivnikoff/russian-travel">
+          <a className="portfolio__link" href="https://github.com/nivnikoff/russian-travel" target="_blank" rel="noreferrer">
             <p className="portfolio__link-text">Адаптивный сайт</p>
             <img className="portfolio__link-img" src={arrow} alt="Russian Travel"></img>
           </a>
         </li>
         <li className="portfolio__list-item">
-          <a className="portfolio__link" href="https://nivnikoff.nomoredomains.club">
+          <a className="portfolio__link" href="https://nivnikoff.nomoredomains.club" target="_blank" rel="noreferrer">
             <p className="portfolio__link-text">Одностраничное приложение</p>
             <img className="portfolio__link-img" src={arrow} alt="Mesto"></img>
           </a>

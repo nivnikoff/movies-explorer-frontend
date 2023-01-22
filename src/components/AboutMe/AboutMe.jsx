@@ -13,7 +13,7 @@ function AboutMe() {
             <p className="student__description">{student.description}, {student.age}</p>
             <p className="student__about">{student.about}</p>
           </div>
-          <a className="student__link" href="https://github.com/nivnikoff">Github</a>
+          <a className="student__link" href="https://github.com/nivnikoff" target="_blank" rel="noreferrer">Github</a>
         </div>
         <img className="student__avatar" src={studentImg} alt="Константин Нивников"></img>
       </div>
