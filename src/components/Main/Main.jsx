@@ -1,5 +1,5 @@
 import Header from '../Header/Header';
-// import Promo from '../Promo';
+import Promo from '../Promo/Promo';
 // import NavTab from '../NavTab';
 // import AboutProject from '../AboutProject';
 // import Techs from '../Techs';
@@ -12,8 +12,8 @@ function Main() {
     <>
       <Header loggedIn = {false} />
       <main>
-        {/* <Promo/>
-        <NavTab/>
+        <Promo/>
+        {/* <NavTab/>
         <AboutProject/>
         <Techs/>
         <AboutMe/>

@@ -1,0 +1,19 @@
+.promo {
+  display: flex;
+  justify-content: center;
+  background-color: #073042;
+  background-image: url(../../images/promo.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 184px 0 224px;
+}
+
+.promo__text {
+  width: 730px;
+  text-align: center;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 58px;
+  margin: 0;
+  padding: 0;
+}
