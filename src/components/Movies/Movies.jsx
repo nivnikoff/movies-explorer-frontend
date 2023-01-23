@@ -1,7 +1,8 @@
 import Header from '../Header/Header';
 import SearchForm from '../SearchForm/SearchForm';
-// import MoviesCardList from '../MoviesCardList';
+import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
+import {movies} from '../../utils/utils';
 
 function Movies() {
   return (
@@ -9,7 +10,7 @@ function Movies() {
       <Header loggedIn = {true} />
       <main className="movies">
         <SearchForm/>
-        {/* <MoviesCardList/> */}
+        <MoviesCardList movies={movies}/>
       </main>
       <Footer/>
     </>
