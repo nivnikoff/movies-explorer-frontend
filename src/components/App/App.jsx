@@ -1,7 +1,7 @@
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import Main from '../Main/Main';
-// import Movies from '../Movies';
+import Movies from '../Movies/Movies';
 // import SavedMovies from '../SavedMovies';
 // import Profile from '../Profile';
 // import Register from '../Register';
@@ -16,10 +16,10 @@ function App() {
       <Route exact path="/">
         <Main/>
       </Route>
-      {/* <Route path="/movies">
+      <Route path="/movies">
         <Movies/>
       </Route>
-      <Route path="/saved-movies">
+      {/* <Route path="/saved-movies">
         <SavedMovies/>
       </Route>
       <Route path="/profile">

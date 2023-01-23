@@ -11,7 +11,7 @@ function Main() {
   return (
     <>
       <Header loggedIn = {false} />
-      <main>
+      <main className="landing">
         <Promo/>
         <NavTab/>
         <AboutProject/>
