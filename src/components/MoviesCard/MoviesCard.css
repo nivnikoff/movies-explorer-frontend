@@ -66,3 +66,21 @@
 .movie__save-btn_favorite {
   background-image: url(../../images/favorite-icon.svg);
 }
+
+.movie__delete-btn {
+  width: 7px;
+  height: 7px;
+  background-image: url(../../images/delete-icon.svg);
+  background-size: 7px 7px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #222222;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity .5s linear;
+}
+
+.movie:hover .movie__delete-btn {
+  opacity: 1;
+}

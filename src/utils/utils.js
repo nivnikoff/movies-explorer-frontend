@@ -79,3 +79,24 @@ export const movies = [
     image: 'https://i.ibb.co/R9r33Mv/Po-volnam.jpg',
   }
 ];
+
+export const savedMovies = [
+  {
+    _id: 1,
+    nameRU: '33 слова о дизайне',
+    duration: '1ч 47м',
+    image: 'https://i.ibb.co/xFVj9ns/33-slova.jpg',
+  },
+  {
+    _id: 2,
+    nameRU: 'Киноальманах «100 лет дизайна»',
+    duration: '1ч 03м',
+    image: 'https://i.ibb.co/PC2j6MH/100-let.jpg',
+  },
+  {
+    _id: 3,
+    nameRU: 'В погоне за Бенкси',
+    duration: '1ч 42м',
+    image: 'https://i.ibb.co/yFLYL4F/V-pogone.jpg',
+  }
+];
