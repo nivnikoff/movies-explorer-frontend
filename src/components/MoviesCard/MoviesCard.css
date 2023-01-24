@@ -81,6 +81,6 @@
   transition: opacity .5s linear;
 }
 
-.movie:hover .movie__delete-btn {
+.movie__info-container:hover .movie__delete-btn {
   opacity: 1;
 }
