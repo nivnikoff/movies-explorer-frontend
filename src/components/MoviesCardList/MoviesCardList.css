@@ -5,6 +5,14 @@
   margin: 0 auto;
 }
 
+@media screen and (max-width: 768px) {
+  .moviesCardList {
+    max-width: 708px;
+    width: calc(100% - 60px);
+    padding: 70px 30px 30px;
+  }
+}
+
 .moviesCardList__list {
   padding: 0;
   margin: 0;
@@ -13,4 +21,12 @@
   column-gap: 24px;
   row-gap: 37px;
   list-style: none;
+}
+
+@media screen and (max-width: 768px) {
+  .moviesCardList__list {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 30px;
+    row-gap: 30px;
+  }
 }

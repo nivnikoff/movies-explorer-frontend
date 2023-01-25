@@ -9,7 +9,7 @@ function Navigation() {
       <Link to="/">
         <img className="navigation__logo" src={logo} alt="Логотип Movies Explorer"></img>
       </Link>
-      <div className="navigation__container">
+      <nav className="navigation__container">
         <div className="navigation__links">
           <Link className="navigation__link navigation__link_movies" to="/movies">
             Фильмы
@@ -21,7 +21,7 @@ function Navigation() {
         <Link className="navigation__link navigation__link_profile" to="/profile">
           Аккаунт
         </Link>
-      </div>
+      </nav>
       <BurgerMenu/>
     </nav>
   )
