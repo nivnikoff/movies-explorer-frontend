@@ -1,0 +1,117 @@
+.burger {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .burger {
+    display: block;
+  }
+
+  .burger__btn-menu {
+    padding: 0;
+    width: 44px;
+    height: 44px;
+    border: none;
+    background-image: url('../../images/burger-icon.svg');
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: opacity .5s linear;
+  }
+
+  .burger__btn-menu:hover {
+    opacity: 0.6;
+  }
+
+  .burger__container {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .3);
+  }
+
+  .burger__container_visible {
+    display: flex;
+  }
+
+  .burger__sidebar {
+    width: 67.7%;
+    height: 100vh;
+    padding: 29px 29px 90px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+    background-color: #202020;
+  }
+
+  .burger__btn-close {
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-image: url('../../images/burger-close.svg');
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    align-self: flex-end;
+    cursor: pointer;
+    transition: opacity .5s linear;
+  }
+
+  .burger__btn-close:hover {
+    opacity: 0.6;
+  }  
+
+  .burger__list {
+    height: calc(100% - 249px);
+    padding-top: 105px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .burger__links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 26px;
+  }
+
+  .burger__link {
+    width: fit-content;
+    padding-bottom: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: white;
+    transition: opacity .5s linear;
+  }
+
+  .burger__link:hover {
+    opacity: 0.6;
+  }
+
+  .burger__link_current {
+    border-bottom: 2px solid white;
+  }
+
+  .burger__link_profile {
+    width: 100px;
+    padding: 8px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    border-radius: 20px;
+    background-color: #313131;
+  }
+}

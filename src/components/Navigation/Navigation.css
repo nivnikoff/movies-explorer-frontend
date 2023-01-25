@@ -19,6 +19,12 @@
   gap: 50px;
 }
 
+@media screen and (max-width: 768px) {
+  .navigation__container {
+    display: none;
+  }
+}
+
 .navigation__links {
   display: flex;
   align-items: center;

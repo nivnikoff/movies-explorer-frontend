@@ -1,6 +1,7 @@
 import './Navigation.css';
 import logo from '../../images/logo.svg';
 import { Link } from 'react-router-dom';
+import BurgerMenu from '../BurgerMenu/BurgerMenu';
 
 function Navigation() {
   return (
@@ -21,6 +22,7 @@ function Navigation() {
           Аккаунт
         </Link>
       </div>
+      <BurgerMenu/>
     </nav>
   )
 }
