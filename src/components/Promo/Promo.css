@@ -8,6 +8,12 @@
   padding: 184px 0 224px;
 }
 
+@media screen and (max-width: 768px) {
+  .promo {
+    padding: 326px 0 342px;
+  }
+}
+
 .promo__text {
   width: 730px;
   text-align: center;

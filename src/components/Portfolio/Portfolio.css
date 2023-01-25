@@ -2,6 +2,12 @@
   padding: 0 70px 125px;
 }
 
+@media screen and (max-width: 768px) {
+  .portfolio {
+    padding: 0 50px 90px;
+  }
+}
+
 .portfolio__title {
   padding-bottom: 50px;
   margin: 0;
@@ -9,6 +15,7 @@
   font-size: 18px;
   line-height: 20px;
   color: #8B8B8B;
+  mix-blend-mode: normal;
 }
 
 .portfolio__list {
@@ -53,8 +60,13 @@
   color: white;
 }
 
+@media screen and (max-width: 768px) {
+  .portfolio__link-text {
+    font-size: 28px;
+  }
+}
+
 .portfolio__link-img {
   width: 29px;
   height: 29px;
-  transition: opacity .5s linear;
 }
