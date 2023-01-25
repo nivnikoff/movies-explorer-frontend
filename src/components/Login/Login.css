@@ -15,6 +15,12 @@
   gap: 40px;
 }
 
+@media screen and (max-width: 768px) {
+  .login__header {
+    padding: 232px 0 40px;
+  }
+}
+
 .login__logo {
   transition: opacity .5s linear;
 }
