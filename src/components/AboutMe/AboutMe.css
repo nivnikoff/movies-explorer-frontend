@@ -8,7 +8,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 348px) {
   .student {
     padding: 70px 14px;
   }
@@ -50,7 +50,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 348px) {
   .student__info {
     padding-top: 40px;
   }
@@ -91,7 +91,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 348px) {
   .student__name {
     padding-bottom: 20px;
     font-size: 30px;
@@ -116,7 +116,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 348px) {
   .student__description {
     font-size: 11px;
     line-height: 16px;
@@ -139,7 +139,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 348px) {
   .student__about {
     font-size: 11px;
     line-height: 16px;

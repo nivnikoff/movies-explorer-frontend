@@ -23,7 +23,7 @@
   gap: 17px;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 348px) {
   .movie__info-container {
     padding: 14px;
     gap: 14px;
@@ -44,7 +44,7 @@
   line-height: 16px;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 348px) {
   .movie__title {
     font-size: 12px;
     line-height: 15px;
@@ -60,7 +60,7 @@
   color: #8B8B8B;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 348px) {
   .movie__duration {
     font-size: 10px;
     line-height: 12px;

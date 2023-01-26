@@ -13,7 +13,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 348px) {
   .moviesCardList {
     max-width: 300px;
     width: calc(100% - 20px);
@@ -39,7 +39,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 348px) {
   .moviesCardList__list {
     grid-template-columns: 1fr;
     row-gap: 14px;

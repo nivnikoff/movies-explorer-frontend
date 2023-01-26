@@ -15,7 +15,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 348px) {
   .promo {
     background-size: 248px 248px;
     padding: 207px 0 246px;
@@ -33,7 +33,7 @@
   padding: 0 10px;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 348px) {
   .promo__text {
     max-width: 300px;
     font-size: 31px;

@@ -9,7 +9,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 348px) {
   .techs {
     padding: 70px 18px;
   }
@@ -25,7 +25,7 @@
   letter-spacing: -0.04em;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 348px) {
   .techs__title {
     padding-bottom: 28px;
     font-size: 30px;
@@ -88,7 +88,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 348px) {
   .techs__text {
     max-width: 292px;
     padding-bottom: 50px;
@@ -113,7 +113,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 348px) {
   .techs__list {
     grid-template-columns: repeat(2, 1fr);
   }
