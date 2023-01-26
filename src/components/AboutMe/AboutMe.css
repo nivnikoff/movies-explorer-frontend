@@ -8,6 +8,12 @@
   }
 }
 
+@media screen and (max-width: 320px) {
+  .student {
+    padding: 70px 14px;
+  }
+}
+
 .student__title {
   padding-bottom: 23px;
   margin: 0;
@@ -24,10 +30,30 @@
   justify-content: space-between;
 }
 
+@media screen and (max-width: 671px) {
+  .student__content {
+    padding-top: 60px;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+}
+
 .student__info {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+@media screen and (max-width: 671px) {
+  .student__info {
+    padding-top: 60px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .student__info {
+    padding-top: 40px;
+  }
 }
 
 .sudent__bio {
@@ -36,9 +62,15 @@
   flex-direction: column;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1040px) {
   .sudent__bio {
-    max-width: 364px;
+    width: calc(100% - 49px);
+  }
+}
+
+@media screen and (max-width: 671px) {
+  .sudent__bio {
+    width: 100%;
   }
 }
 
@@ -51,11 +83,19 @@
   letter-spacing: -0.04em;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 845px) {
   .student__name {
     padding-bottom: 16px;
     font-size: 40px;
     line-height: 40px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .student__name {
+    padding-bottom: 20px;
+    font-size: 30px;
+    line-height: 36px;
   }
 }
 
@@ -68,11 +108,18 @@
   mix-blend-mode: normal;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 845px) {
   .student__description {
     padding-bottom: 20px;
     font-size: 12px;
     line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .student__description {
+    font-size: 11px;
+    line-height: 16px;
   }
 }
 
@@ -85,21 +132,35 @@
   mix-blend-mode: normal;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 845px) {
   .student__about {
     font-size: 12px;
     line-height: 18px;
   }
 }
 
+@media screen and (max-width: 320px) {
+  .student__about {
+    font-size: 11px;
+    line-height: 16px;
+  }
+}
+
 .student__link {
   padding: 0;
   margin: 0;
+  text-decoration: none;
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
   color: white;
   transition: opacity .5s linear;
+}
+
+@media screen and (max-width: 671px) {
+  .student__link {
+    padding-top: 40px;
+  }
 }
 
 .student__link:hover {
@@ -114,9 +175,16 @@
   border-radius: 10px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 845px) {
   .student__avatar {
     max-width: 255px;
     max-height: 307px;
+  }
+}
+
+@media screen and (max-width: 671px) {
+  .student__avatar {
+    max-width: 292px;
+    max-height: 352px;
   }
 }

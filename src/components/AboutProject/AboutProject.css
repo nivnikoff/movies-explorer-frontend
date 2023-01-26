@@ -8,6 +8,12 @@
   }
 }
 
+@media screen and (max-width: 430px) {
+  .project {
+    padding: 70px 18px;
+  }
+}
+
 .project__title {
   padding-bottom: 23px;
   margin: 0;
@@ -15,6 +21,15 @@
   font-weight: 400;
   font-size: 22px;
   line-height: 27px;
+  letter-spacing: -0.04em;
+}
+
+@media screen and (max-width: 320px) {
+  .project__title {
+    padding-bottom: 28px;
+    font-size: 18px;
+    line-height: 22px;
+  }
 }
 
 .project__description {
@@ -32,6 +47,14 @@
   }
 }
 
+@media screen and (max-width: 490px) {
+  .project__description {
+    padding: 60px 0;
+    flex-direction: column;
+    gap: 56px;
+  }
+}
+
 .project__description-info {
   display: flex;
   flex-direction: column;
@@ -44,6 +67,12 @@
   }
 }
 
+@media screen and (max-width: 320px) {
+  .project__description-info {
+    gap: 16px;
+  }
+}
+
 .project__description-title {
   padding: 0;
   margin: 0;
@@ -51,6 +80,13 @@
   font-size: 20px;
   line-height: 24px;
   letter-spacing: -0.04em;
+}
+
+@media screen and (max-width: 320px) {
+  .project__description-title {
+    font-size: 18px;
+    line-height: 22px;
+  }
 }
 
 .project__description-text {
@@ -68,10 +104,18 @@
   }
 }
 
+@media screen and (max-width: 320px) {
+  .project__description-text {
+    font-size: 11px;
+    line-height: 16px;
+  }
+}
+
 .project__timeline {
   padding: 0;
   margin: 0;
   display: flex;
+  justify-content: center;
 }
 
 .project__timeline_backend {
@@ -81,6 +125,13 @@
   gap: 14px;
 }
 
+@media screen and (max-width: 365px) {
+  .project__timeline_backend {
+    width: 100px;
+    gap: 10px;
+  }
+}
+
 .project__timeline_frontend {
   width: 80%;
   display: flex;
@@ -88,14 +139,28 @@
   gap: 14px;
 }
 
-.project__timeline-duration {
-    padding: 9px;
-    margin: 0;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
-    text-align: center;
+@media screen and (max-width: 365px) {
+  .project__timeline_frontend {
+    width: 184px;
+    gap: 10px;
   }
+}
+
+.project__timeline-duration {
+  padding: 9px;
+  margin: 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+}
+
+@media screen and (max-width: 490px) {
+  .project__timeline-duration {
+    font-size: 11px;
+    line-height: 13px;
+  }
+}
 
 .project__timeline-duration_green {
   background-color: #3DDC84;
@@ -118,5 +183,12 @@
 @media screen and (max-width: 768px) {
   .project__timeline-title {
     font-weight: 400px;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .project__timeline-title {
+    font-size: 11px;
+    line-height: 13px;
   }
 }

@@ -20,7 +20,7 @@ function Header({ loggedIn }) {
               <Link className="header__link" to="/signup">
                 Регистрация
               </Link>
-              <Link className="header__link-btn" to="/signin">
+              <Link className="header__link header__link_btn" to="/signin">
                 Войти
               </Link>
             </div>

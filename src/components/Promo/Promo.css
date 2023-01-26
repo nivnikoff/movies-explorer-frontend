@@ -3,6 +3,7 @@
   justify-content: center;
   background-color: #073042;
   background-image: url(../../images/promo.svg);
+  background-size: 320px 320px;
   background-position: center;
   background-repeat: no-repeat;
   padding: 184px 0 224px;
@@ -14,12 +15,29 @@
   }
 }
 
+@media screen and (max-width: 320px) {
+  .promo {
+    background-size: 248px 248px;
+    padding: 207px 0 246px;
+  }
+}
+
 .promo__text {
-  width: 730px;
+  max-width: 730px;
   text-align: center;
   font-weight: 400;
   font-size: 50px;
   line-height: 58px;
+  letter-spacing: -0.04em;
   margin: 0;
-  padding: 0;
+  padding: 0 10px;
+}
+
+@media screen and (max-width: 320px) {
+  .promo__text {
+    max-width: 300px;
+    font-size: 31px;
+    line-height: 39px;
+    letter-spacing: -0.04em;
+  }
 }
