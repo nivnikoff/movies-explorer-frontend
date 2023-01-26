@@ -9,12 +9,26 @@
   align-items: center;
 }
 
+@media screen and (max-width: 348px) {
+  .login {
+    width: 260px;
+  }
+}
+
 .login__header {
   width: 100%;
   padding: 70px 0 40px;
   display: flex;
   flex-direction: column;
   gap: 40px;
+}
+
+@media screen and (max-width: 348px) {
+  .login__header {
+    align-items: center;
+    padding: 55px 0 80px;
+    gap: 50px;
+  }
 }
 
 .login__logo {
@@ -35,7 +49,7 @@
 
 .login__form {
   width: 100%;
-  padding-bottom: 23px;
+  margin-bottom: 23px;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -100,6 +114,13 @@
   gap: 16px;
 }
 
+@media screen and (max-width: 348px) {
+  .login__footer {
+    padding: 157px 0 30px;
+    gap: 14px;
+  }
+}
+
 .login__btn {
   width: 100%;
   padding: 13px 0 15px;
@@ -115,6 +136,14 @@
   transition: opacity .5s linear;
 }
 
+@media screen and (max-width: 348px) {
+  .login__btn {
+    padding: 15px 0 15px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+
 .login__btn:hover {
   opacity: 0.6;
 }
@@ -123,6 +152,12 @@
   display: flex;
   align-items: center;
   gap: 6px;
+}
+
+@media screen and (max-width: 348px) {
+  .login__link-container {
+    gap: 7px;
+  }
 }
 
 .login__link-text {
@@ -135,6 +170,13 @@
   color: #8B8B8B;
 }
 
+@media screen and (max-width: 348px) {
+  .login__link-text {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+
 .login__link {
   text-decoration: none;
   font-weight: 400;
@@ -143,6 +185,13 @@
   text-align: center;
   color: #4285F4;
   transition: opacity .5s linear;
+}
+
+@media screen and (max-width: 348px) {
+  .login__link {
+    font-size: 12px;
+    line-height: 15px;
+  }
 }
 
 .login__link:hover {
