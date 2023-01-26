@@ -13,7 +13,7 @@ function Portfolio() {
           </a>
         </li>
         <li className="portfolio__list-item">
-          <a className="portfolio__link" href="https://github.com/nivnikoff/russian-travel" target="_blank" rel="noreferrer">
+          <a className="portfolio__link" href="https://nivnikoff.github.io/russian-travel/" target="_blank" rel="noreferrer">
             <p className="portfolio__link-text">Адаптивный сайт</p>
             <img className="portfolio__link-img" src={arrow} alt="Russian Travel"></img>
           </a>
