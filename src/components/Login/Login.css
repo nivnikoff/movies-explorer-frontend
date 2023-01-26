@@ -1,6 +1,6 @@
 .login {
   width: 396px;
-  height: 100vh;
+  height: 100%;
   padding: 0;
   margin: 0 auto;
   display: flex;
@@ -116,7 +116,7 @@
 
 @media screen and (max-width: 348px) {
   .login__footer {
-    padding: 157px 0 30px;
+    padding: 267px 0 30px;
     gap: 14px;
   }
 }
