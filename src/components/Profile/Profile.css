@@ -1,0 +1,134 @@
+.profile {
+  height: calc(100% - 74px);
+  padding: 74px 0 70px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .profile {
+    padding: 236px 0 269px;
+  }
+}
+
+@media screen and (max-width: 348px) {
+  .profile {
+    padding: 70px 0 40px;
+  }
+}
+
+.profile__header {
+  margin: 0 0 123px;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .profile__header {
+    margin: 0 0 96px;
+  }
+}
+
+@media screen and (max-width: 348px) {
+  .profile__header {
+    margin: 0 0 80px;
+  }
+}
+
+.profile__container {
+  width: 410px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+}
+
+@media screen and (max-width: 348px) {
+  .profile__container {
+    width: 260px;
+  }
+}
+
+.profile__container_name {
+  padding-bottom: 16px;
+  border-bottom: 1px solid #424242;
+}
+
+.profile__container_email {
+  padding-top: 17px;
+}
+
+.profile__input-name {
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13px;
+}
+
+.profile__input {
+  padding: 0;
+  width: 85%;
+  background-color: black;
+  border: none;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+  text-align: right;
+  color: white;
+}
+
+.profile__buttons {
+  margin-top: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@media screen and (max-width: 768px) {
+  .profile__buttons {
+    margin-top: 210px;
+  }
+}
+
+@media screen and (max-width: 348px) {
+  .profile__buttons {
+    margin-top: 379px;
+  }
+}
+
+.profile__btn {
+  padding: 0;
+  border: none;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  background-color: transparent;
+  cursor: pointer;
+  transition: opacity .5s linear;
+}
+
+@media screen and (max-width: 348px) {
+  .profile__btn {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+
+.profile__btn:hover {
+  opacity: 0.6;
+}
+
+.profile__btn_edit {
+  font-weight: 400;
+  color: white;
+}
+
+.profile__btn_logout {
+  font-weight: 500;
+  color: #EE3465;
+}
