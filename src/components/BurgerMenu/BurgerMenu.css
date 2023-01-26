@@ -40,7 +40,7 @@
   }
 
   .burger__sidebar {
-    width: 67.7%;
+    width: 520px;
     height: 100vh;
     padding: 29px 29px 90px 0;
     display: flex;
@@ -113,5 +113,16 @@
     line-height: 16px;
     border-radius: 20px;
     background-color: #313131;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .burger__sidebar {
+    width: 100%;
+    padding: 20px 20px 46px 0;
+  }
+
+  .burger__list {
+    height: calc(100% - 190px);
   }
 }

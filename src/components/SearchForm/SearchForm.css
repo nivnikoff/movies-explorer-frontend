@@ -1,12 +1,20 @@
 .search {
   width: calc(100% - 140px);
-  padding: 80px 70px 10px;
+  padding: 80px 0px 10px;
+  margin: 0 auto;
 }
 
 @media screen and (max-width: 768px) {
   .search {
     width: calc(100% - 60px);
-    padding: 80px 30px 10px;
+    padding: 80px 0px 10px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .search {
+    width: calc(100% - 28px);
+    padding: 81px 0px 10px;
   }
 }
 
@@ -15,6 +23,12 @@
   flex-direction: column;
   gap: 30px;
   border-bottom: 1px solid #424242;
+}
+
+@media screen and (max-width: 320px) {
+  .search__form {
+    gap: 45px;
+  }
 }
 
 .search__bar {
@@ -34,6 +48,14 @@
   font-size: 14px;
   line-height: 18px;
   color: #8B8B8B;
+}
+
+@media screen and (max-width: 320px) {
+  .search__input {
+    padding: 13px 0 13px 16px;
+    font-size: 12px;
+    line-height: 18px;
+  }
 }
 
 .search__btn {
@@ -61,6 +83,13 @@
   align-items: center;
   gap: 12px;
   margin: 0 auto;
+}
+
+@media screen and (max-width: 320px) {
+  .search__switch {
+    padding-bottom: 43px;
+    gap: 13px;
+  }
 }
 
 .search__toggle {
@@ -91,4 +120,10 @@
   font-weight: 400;
   font-size: 12px;
   line-height: 18px;
+}
+
+@media screen and (max-width: 320px) {
+  .search__checkbox-text {
+    font-size: 11px;
+  }
 }

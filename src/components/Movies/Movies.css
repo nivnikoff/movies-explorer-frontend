@@ -13,8 +13,9 @@
 
 .movies__more-btn {
   width: 320px;
-  padding: 11px 60px 9px;
+  padding: 11px 0px 9px;
   background-color: #2F2F2F;
+  border: none;
   border-radius: 6px;
   font-weight: 500;
   font-size: 12px;
@@ -23,6 +24,12 @@
   color: white;
   cursor: pointer;
   transition: opacity .5s linear;
+}
+
+@media screen and (max-width: 348px) {
+  .movies__more-btn {
+    width: 240px;
+  }
 }
 
 .movies__more-btn:hover {

@@ -23,6 +23,13 @@
   gap: 17px;
 }
 
+@media screen and (max-width: 320px) {
+  .movie__info-container {
+    padding: 14px;
+    gap: 14px;
+  }
+}
+
 .movie__info {
   display: flex;
   justify-content: space-between;
@@ -37,6 +44,13 @@
   line-height: 16px;
 }
 
+@media screen and (max-width: 320px) {
+  .movie__title {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
+
 .movie__duration {
   padding: 0;
   margin: 0;
@@ -44,6 +58,13 @@
   font-size: 11px;
   line-height: 13px;
   color: #8B8B8B;
+}
+
+@media screen and (max-width: 320px) {
+  .movie__duration {
+    font-size: 10px;
+    line-height: 12px;
+  }
 }
 
 .movie__save-btn {
