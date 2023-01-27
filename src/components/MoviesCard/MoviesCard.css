@@ -18,22 +18,32 @@
 .movie__info-container {
   padding: 16px;
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  gap: 17px;
 }
 
-@media screen and (max-width: 348px) {
+@media screen and (max-width: 768px) {
   .movie__info-container {
     padding: 14px;
-    gap: 14px;
   }
 }
 
 .movie__info {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 17px;
+}
+
+@media screen and (max-width: 768px) {
+  .movie__info {
+    gap: 15px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .movie__info {
+    gap: 14px;
+  }
 }
 
 .movie__title {
@@ -44,7 +54,7 @@
   line-height: 16px;
 }
 
-@media screen and (max-width: 348px) {
+@media screen and (max-width: 400px) {
   .movie__title {
     font-size: 12px;
     line-height: 15px;
@@ -60,7 +70,7 @@
   color: #8B8B8B;
 }
 
-@media screen and (max-width: 348px) {
+@media screen and (max-width: 400px) {
   .movie__duration {
     font-size: 10px;
     line-height: 12px;
@@ -68,8 +78,9 @@
 }
 
 .movie__save-btn {
-  width: 14px;
-  height: 12px;
+  width: 30px;
+  height: 30px;
+  padding: 0;
   background-image: url(../../images/save-icon.svg);
   background-size: 14px 12px;
   background-repeat: no-repeat;

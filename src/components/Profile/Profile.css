@@ -13,7 +13,7 @@
   }
 }
 
-@media screen and (max-width: 348px) {
+@media screen and (max-width: 400px) {
   .profile {
     padding: 70px 0 40px;
   }
@@ -33,7 +33,7 @@
   }
 }
 
-@media screen and (max-width: 348px) {
+@media screen and (max-width: 400px) {
   .profile__header {
     margin: 0 0 80px;
   }
@@ -49,7 +49,7 @@
   border: none;
 }
 
-@media screen and (max-width: 348px) {
+@media screen and (max-width: 400px) {
   .profile__container {
     width: 260px;
   }
@@ -95,7 +95,7 @@
   }
 }
 
-@media screen and (max-width: 348px) {
+@media screen and (max-width: 400px) {
   .profile__buttons {
     margin-top: 379px;
   }
@@ -112,7 +112,7 @@
   transition: opacity .5s linear;
 }
 
-@media screen and (max-width: 348px) {
+@media screen and (max-width: 400px) {
   .profile__btn {
     font-size: 12px;
     line-height: 15px;

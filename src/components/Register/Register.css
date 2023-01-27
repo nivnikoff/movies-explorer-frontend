@@ -9,7 +9,7 @@
   align-items: center;
 }
 
-@media screen and (max-width: 348px) {
+@media screen and (max-width: 400px) {
   .register {
     width: 260px;
   }
@@ -23,7 +23,7 @@
   gap: 40px;
 }
 
-@media screen and (max-width: 348px) {
+@media screen and (max-width: 400px) {
   .register__header {
     align-items: center;
     padding: 55px 0 80px;
@@ -114,7 +114,7 @@
   gap: 16px;
 }
 
-@media screen and (max-width: 348px) {
+@media screen and (max-width: 400px) {
   .register__footer {
     padding: 157px 0 30px;
     gap: 14px;
@@ -136,7 +136,7 @@
   transition: opacity .5s linear;
 }
 
-@media screen and (max-width: 348px) {
+@media screen and (max-width: 400px) {
   .register__btn {
     padding: 15px 0 15px;
     font-size: 12px;
@@ -154,7 +154,7 @@
   gap: 6px;
 }
 
-@media screen and (max-width: 348px) {
+@media screen and (max-width: 400px) {
   .register__link-container {
     gap: 7px;
   }
@@ -170,7 +170,7 @@
   color: #8B8B8B;
 }
 
-@media screen and (max-width: 348px) {
+@media screen and (max-width: 400px) {
   .register__link-text {
     font-size: 12px;
     line-height: 15px;
@@ -187,7 +187,7 @@
   transition: opacity .5s linear;
 }
 
-@media screen and (max-width: 348px) {
+@media screen and (max-width: 400px) {
   .register__link {
     font-size: 12px;
     line-height: 15px;

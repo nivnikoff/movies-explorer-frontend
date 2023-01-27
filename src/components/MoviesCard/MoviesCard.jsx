@@ -16,13 +16,13 @@ function MoviesCard(props) {
       <div className="movie__info-container">
         <div className="movie__info">
           <h2 className="movie__title">{props.nameRU}</h2>
-          {pathname === '/movies' ? (
+          <p className="movie__duration">{props.duration}</p>
+        </div>
+        {pathname === '/movies' ? (
             <button className={saveBtnClassName} type="button" onClick={handleFavoriteToogle}/>
           ) : (
             <button className="movie__delete-btn" type="button"/>
           )}
-        </div>
-        <p className="movie__duration">{props.duration}</p>
       </div>
     </li>
   )

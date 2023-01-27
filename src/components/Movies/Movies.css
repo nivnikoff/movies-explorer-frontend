@@ -26,7 +26,7 @@
   transition: opacity .5s linear;
 }
 
-@media screen and (max-width: 348px) {
+@media screen and (max-width: 400px) {
   .movies__more-btn {
     width: 240px;
   }

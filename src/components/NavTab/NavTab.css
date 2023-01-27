@@ -7,7 +7,7 @@
   margin: auto;
 }
 
-@media screen and (max-width: 348px) {
+@media screen and (max-width: 400px) {
   .navtab {
     gap: 24px;
   }
@@ -22,7 +22,7 @@
   transition: opacity .5s linear;
 }
 
-@media screen and (max-width: 348px) {
+@media screen and (max-width: 400px) {
   .navtab__link {
     font-size: 11px;
   }
