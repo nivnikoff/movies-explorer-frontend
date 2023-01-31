@@ -1,4 +1,4 @@
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
 import React, {useState} from 'react';
 import './App.css';
 import Main from '../Main/Main';
@@ -10,11 +10,34 @@ import Login from '../Login/Login';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
+import { mainApi } from '../../utils/MainApi';
 
 function App() {
   // состояние пользователя
   const [currentUser, setCurrentUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // Переменная для хука useHistory
+  const history = useHistory();
+  // Обработка регистрации
+  function handleRegister(data) {
+    mainApi.register(data)
+      .then(() => {
+        handleLogin(data);
+      })
+      .catch(err => console.log(err))
+  }
+  // Обработка входа
+  function handleLogin(data) {
+    mainApi.login(data)
+      .then((res) => {
+        if (res.token) {
+          localStorage.setItem('jwt', res.token);
+          setIsLoggedIn(true);
+          history.push('/movies');
+        }
+      })
+      .catch(err => console.log(err))
+  }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -41,10 +64,10 @@ function App() {
             component={Profile}
           />
           <Route path="/signup">
-            <Register/>
+            <Register onRegister={handleRegister}/>
           </Route>
           <Route path="/signin">
-            <Login/>
+            <Login onLogin={handleLogin}/>
           </Route>
           <Route path="*">
             <PageNotFound/>
