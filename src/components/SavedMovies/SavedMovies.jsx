@@ -5,10 +5,10 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 import {savedMovies} from '../../utils/utils';
 
-function SavedMovies() {
+function SavedMovies(props) {
   return (
     <>
-      <Header loggedIn = {true} />
+      <Header loggedIn = {props.isLoggedIn} />
       <main className="savedMovies">
         <SearchForm/>
         <MoviesCardList movies={savedMovies}/>

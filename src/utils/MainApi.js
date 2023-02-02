@@ -1,7 +1,6 @@
 class MainApi {
   constructor(options) {
     this._url = options.url;
-    this._header = options.header;
   }
 
   _checkServerResponse(res){
@@ -57,13 +56,28 @@ class MainApi {
       .then(this._checkServerResponse)
   };
 
+//   getUser() {
+//     return fetch(`${this._url}/users/me`,{
+//       method: 'GET',
+//       headers: this._headers
+//     })
+//       .then(this._checkServerResponse)
+//   }
+
+  editUser(name, email) {
+    return fetch(`${this._url}/users/me`,{
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+      },
+      body: JSON.stringify({ name, email })
+    })
+      .then(this._checkServerResponse)
+   }
 }
 
 export const mainApi = new MainApi({
 //   url: 'api.nivnikoff-diploma.nomoredomains.club',
-  url: 'http://localhost:3000',
-  headers: {
-    "authorization": `Bearer ${localStorage.getItem('jwt')}`,
-    "Content-Type": "application/json"
-  }
+  url: 'http://localhost:3000'
 })

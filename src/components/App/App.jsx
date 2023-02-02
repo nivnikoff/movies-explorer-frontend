@@ -1,5 +1,5 @@
 import { Route, Switch, useHistory } from 'react-router-dom';
-import React, {useState} from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import './App.css';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
@@ -18,6 +18,26 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   // Переменная для хука useHistory
   const history = useHistory();
+  // Проверка токена
+  const handleCheckToken = useCallback(() => {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      mainApi.checkToken(jwt)
+        .then((res) => {
+          const { _id, name, email } = res;
+          setCurrentUser({ _id, name, email });
+          setIsLoggedIn(true);
+        })
+        .catch((err) => {
+          console.log(err);
+          // handleLogOut()
+        })
+    }
+  }, []);
+
+  useEffect(() => {
+    handleCheckToken();
+  }, [handleCheckToken]);
   // Обработка регистрации
   function handleRegister(data) {
     mainApi.register(data)
@@ -32,21 +52,42 @@ function App() {
       .then((res) => {
         if (res.token) {
           localStorage.setItem('jwt', res.token);
-          setIsLoggedIn(true);
+          handleCheckToken();
           history.push('/movies');
         }
       })
       .catch(err => console.log(err))
   }
+  // Обработка выхода
+  function handleLogOut() {
+    localStorage.removeItem('jwt');
+    setIsLoggedIn(false);
+    setCurrentUser({
+      _id: '',
+      name: '',
+      email: '',
+    });
+  }
+  // Обработка редактирования профиля 
+  function handleEditProfile({ name, email }) {
+    mainApi.editUser(name, email)
+      .then((res) => {
+        setCurrentUser({
+          name: res.name,
+          email: res.email,
+        });
+      })
+      .catch(err => console.log(err))
+  }
 
   return (
-    <CurrentUserContext.Provider value={currentUser}>
+    <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
       <div className="app">
 
         <Switch>
 
           <Route exact path="/">
-            <Main/>
+            <Main isLoggedIn={isLoggedIn}/>
           </Route>
           <ProtectedRoute 
             path="/movies"
@@ -62,6 +103,8 @@ function App() {
             path="/profile"
             isLoggedIn={isLoggedIn}
             component={Profile}
+            onEdit={handleEditProfile}
+            handleLogout={handleLogOut}
           />
           <Route path="/signup">
             <Register onRegister={handleRegister}/>

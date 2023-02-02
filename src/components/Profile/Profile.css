@@ -73,7 +73,7 @@
 .profile__input {
   padding: 0;
   width: 85%;
-  background-color: black;
+  background-color: transparent;
   border: none;
   font-weight: 400;
   font-size: 11px;
@@ -126,6 +126,14 @@
 .profile__btn_edit {
   font-weight: 400;
   color: white;
+}
+
+.profile__btn_edit:disabled {
+  cursor: default;
+}
+
+.profile__btn_edit:disabled:hover {
+  opacity: 1;
 }
 
 .profile__btn_logout {

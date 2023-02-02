@@ -40,7 +40,7 @@ function Register(props) {
             maxLength="30"
             pattern='^(?!\s)[A-Za-zА-Яа-я\-\s]+$'
             value={values.name}
-            onChange={(e) => handleChange(e)}
+            onChange={handleChange}
             className={`register__form-input ${errors.userName ? 'register__form-input_error' : ''}`} 
             required 
           />
@@ -53,7 +53,7 @@ function Register(props) {
             type="email"
             placeholder="Введите email"
             value={values.email}
-            onChange={(e) => handleChange(e)}
+            onChange={handleChange}
             className={`register__form-input ${errors.userEmail ? 'register__form-input_error' : ''}`} 
             required 
           />

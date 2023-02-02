@@ -35,7 +35,7 @@ function Login(props) {
             type="email"
             placeholder="Введите email"
             value={values.email}
-            onChange={(e) => handleChange(e)}
+            onChange={handleChange}
             className={`login__form-input ${errors.userEmail ? 'login__form-input_error' : ''}`} 
             required 
           />
@@ -49,7 +49,7 @@ function Login(props) {
             placeholder="Введите пароль"
             minLength="8"
             value={values.password}
-            onChange={(e) => handleChange(e)}
+            onChange={handleChange}
             className={`login__form-input ${errors.userPassword ? 'login__form-input_error' : ''}`} 
             required 
           />
