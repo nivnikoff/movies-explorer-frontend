@@ -56,14 +56,6 @@ class MainApi {
       .then(this._checkServerResponse)
   };
 
-//   getUser() {
-//     return fetch(`${this._url}/users/me`,{
-//       method: 'GET',
-//       headers: this._headers
-//     })
-//       .then(this._checkServerResponse)
-//   }
-
   editUser(name, email) {
     return fetch(`${this._url}/users/me`,{
       method: 'PATCH',

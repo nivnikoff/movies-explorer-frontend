@@ -41,27 +41,23 @@
 
 .profile__container {
   width: 410px;
-  padding: 0;
+  padding: 0 0 16px;
   margin: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border: none;
+  border-bottom: 1px solid #424242;
+}
+
+.profile__container:last-of-type {
+  padding: 7px 0 16px;
 }
 
 @media screen and (max-width: 400px) {
   .profile__container {
     width: 260px;
   }
-}
-
-.profile__container_name {
-  padding-bottom: 16px;
-  border-bottom: 1px solid #424242;
-}
-
-.profile__container_email {
-  padding-top: 17px;
 }
 
 .profile__input-name {
@@ -82,8 +78,50 @@
   color: white;
 }
 
+.profile__error {
+  display: block;
+  min-height: 12px;
+  width: 410px;
+  padding-top: 5px;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #EE3465;
+}
+
+@media screen and (max-width: 400px) {
+  .profile__error {
+    width: 260px;
+  }
+}
+
+.profile__edit-message {
+  display: block;
+  margin-top: 171px;
+  min-height: 16px;
+  width: 410px;
+  padding-bottom: 16px;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+}
+
+@media screen and (max-width: 400px) {
+  .profile__edit-message {
+    width: 260px;
+  }
+}
+
+.profile__edit-message_success {
+  color: #3DDC84;
+}
+
+.profile__edit-message_fail {
+  color: #EE3465;
+}
+
 .profile__buttons {
-  margin-top: 220px;
   display: flex;
   flex-direction: column;
   gap: 16px;

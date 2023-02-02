@@ -16,6 +16,10 @@ function App() {
   // состояние пользователя
   const [currentUser, setCurrentUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // состояния редактирования профиля
+  const [isEditSuccessful, setIsEditSuccessful] = useState(false);
+  const [editMessageSuccess, setEditMessageSuccess] = useState("");
+  const [editMessageFail, setEditMessageFail] = useState("");
   // Переменная для хука useHistory
   const history = useHistory();
   // Проверка токена
@@ -30,7 +34,7 @@ function App() {
         })
         .catch((err) => {
           console.log(err);
-          // handleLogOut()
+          handleLogOut()
         })
     }
   }, []);
@@ -76,8 +80,16 @@ function App() {
           name: res.name,
           email: res.email,
         });
+        setIsEditSuccessful(true);
+        setEditMessageSuccess("Профиль отредактирован!");
+        setTimeout(() => setEditMessageSuccess(""), 5000);
       })
-      .catch(err => console.log(err))
+      .catch(err => {
+        console.log(err);
+        setIsEditSuccessful(false);
+        setEditMessageFail("Что-то пошло не так...");
+        setTimeout(() => setEditMessageFail(""), 5000);
+      })
   }
 
   return (
@@ -105,6 +117,9 @@ function App() {
             component={Profile}
             onEdit={handleEditProfile}
             handleLogout={handleLogOut}
+            isEditSuccessful={isEditSuccessful}
+            editMessageSuccess={editMessageSuccess}
+            editMessageFail={editMessageFail}
           />
           <Route path="/signup">
             <Register onRegister={handleRegister}/>
