@@ -20,6 +20,7 @@ function MoviesCardList(props) {
                 image={`https://api.nomoreparties.co/${movie.image.url}`}
                 nameRU={movie.nameRU}
                 duration={movie.duration}
+                trailer={movie.trailerLink}
               />
             )
           })}

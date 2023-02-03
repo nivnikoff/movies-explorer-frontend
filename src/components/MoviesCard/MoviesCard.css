@@ -1,6 +1,7 @@
 .movie {
   max-width: 364px;
   max-height: 281px;
+  width: 100%;
   padding: 0;
   margin: 0;
   display: flex;
