@@ -13,9 +13,7 @@ class MainApi {
   register(user) {
     return fetch(`${this._url}/signup`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ 
         email: user.email, 
         password: user.password,
@@ -28,9 +26,7 @@ class MainApi {
   login(user) {
     return fetch(`${this._url}/signin`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ 
         email: user.email, 
         password: user.password, 
@@ -49,8 +45,8 @@ class MainApi {
     return fetch(`${this._url}/users/me`, {
       method: 'GET',
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${jwt}`,
+        'Authorization': `Bearer ${jwt}`,
+        'Content-Type': 'application/json'
       },
     })
       .then(this._checkServerResponse)
@@ -60,8 +56,8 @@ class MainApi {
     return fetch(`${this._url}/users/me`,{
       method: 'PATCH',
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({ name, email })
     })

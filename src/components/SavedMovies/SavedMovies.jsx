@@ -8,7 +8,7 @@ import {savedMovies} from '../../utils/utils';
 function SavedMovies(props) {
   return (
     <>
-      <Header loggedIn = {props.isLoggedIn} />
+      <Header loggedIn = {props.isLoggedIn}/>
       <main className="savedMovies">
         <SearchForm/>
         <MoviesCardList movies={savedMovies}/>

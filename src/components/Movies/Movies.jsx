@@ -3,7 +3,6 @@ import Header from '../Header/Header';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
-import {movies} from '../../utils/utils';
 
 function Movies(props) {
   return (
@@ -11,7 +10,7 @@ function Movies(props) {
       <Header loggedIn = {props.isLoggedIn} />
       <main className="movies">
         <SearchForm/>
-        <MoviesCardList movies={movies}/>
+        <MoviesCardList movies={props.movies}/>
         <div className="movies__btn-container">
           <button className="movies__more-btn" type="button" name="more">Ещё</button>
         </div>

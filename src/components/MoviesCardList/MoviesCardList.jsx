@@ -10,14 +10,14 @@ function MoviesCardList(props) {
   return (
     <section className="moviesCardList">
       {isLoading ? (
-        <Preloader />
+        <Preloader/>
       ) : (
         <ul className="moviesCardList__list">
           {movies.map((movie) => {
             return(
               <MoviesCard
-                key={movie._id}
-                image={movie.image}
+                key={movie.id}
+                image={`https://api.nomoreparties.co/${movie.image.url}`}
                 nameRU={movie.nameRU}
                 duration={movie.duration}
               />

@@ -25,7 +25,7 @@ function Register(props) {
     <main className="register">
       <div className="register__header">
         <Link to="/">
-          <img className="register__logo" src={logo} alt="Логотип Movies Explorer"></img>
+          <img className="register__logo" src={logo} alt="Логотип Movies Explorer"/>
         </Link>
         <h2 className="register__title">Добро пожаловать!</h2>
       </div>
