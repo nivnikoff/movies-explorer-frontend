@@ -11,7 +11,6 @@ import PageNotFound from '../PageNotFound/PageNotFound';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import { mainApi } from '../../utils/MainApi';
-import { moviesApi } from '../../utils/MoviesApi';
 
 function App() {
   // Состояние пользователя
@@ -21,8 +20,6 @@ function App() {
   const [isEditSuccessful, setIsEditSuccessful] = useState(false);
   const [editMessageSuccess, setEditMessageSuccess] = useState('');
   const [editMessageFail, setEditMessageFail] = useState('');
-  // Состояния фильмов
-  const [movies, setMovies] = useState([]);
   // Переменная для хука useHistory
   const history = useHistory();
   // Проверка токена
@@ -93,14 +90,6 @@ function App() {
         setTimeout(() => setEditMessageFail(''), 5000);
       })
   }
-  //Получение фильмов
-  useEffect(() => {
-    if (isLoggedIn) {
-      moviesApi.getMovies()
-        .then((res)=> {setMovies(res)})
-        .catch(err => console.log(err));
-    }
-    }, [isLoggedIn]);
   // Разметка страницы
   return (
     <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
@@ -115,7 +104,6 @@ function App() {
             path="/movies"
             isLoggedIn={isLoggedIn}
             component={Movies}
-            movies={movies}
           />
           <ProtectedRoute
             path="/saved-movies"

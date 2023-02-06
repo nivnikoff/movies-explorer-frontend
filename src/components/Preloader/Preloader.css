@@ -41,8 +41,10 @@
 
 .preloader {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    max-width: 300px;
     width: 100%;
     height: 100%;
     z-index: 10;
@@ -50,9 +52,14 @@
 }
 
 .preloader__container {
+    display: none;
     width: 100px;
     height: 100px;
     position: relative;
+}
+
+.preloader__container_active {
+    display: block;
 }
 
 .preloader__round {
@@ -77,7 +84,7 @@
 }
 
 .preloader__round::after {
-    background: white;
+    background: #2F2F2F;
     animation: preloader-inside-white 1s ease-in-out infinite;
 }
 
@@ -85,4 +92,22 @@
     z-index: 10;
     background: #3DDC84;
     animation: preloader-inside-red 1s ease-in-out infinite;
+}
+
+.preloader__message {
+  display: none;
+  padding: 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  color: #EE3465;
+}
+
+.preloader__message_noResult {
+  display: block;
+}
+
+.preloader__message_searchFailed {
+  display: block;
 }

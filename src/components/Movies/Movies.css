@@ -24,6 +24,11 @@
   color: white;
   cursor: pointer;
   transition: opacity .5s linear;
+  display: none;
+}
+
+.movies__more-btn_active {
+  display: block;
 }
 
 @media screen and (max-width: 400px) {
