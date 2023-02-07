@@ -11,52 +11,68 @@ function Movies(props) {
   const [isSearching, setIsSearching] = useState(false);
   const [searchNoResult, setSearchNoResult] = useState(false);
   const [searchFailed, setSearchFailed] = useState(false);
-  const [lastSearchQuery, setLastSearchQuery] = useState(JSON.parse(localStorage.getItem("searchQuery")));
+  const [lastSearchQuery, setLastSearchQuery] = useState(JSON.parse(localStorage.getItem("lastSearchQuery")));
+  const [lastTumblerStatus, setLastTumblerStatus] = useState(false);
   
   const [searchedMovies, setSearchedMovies] = useState([]);
-  // const [shortsTumblerOn, setShortsTumblerOn] = useState(false);
 
   // const [savedMovies, setSavedMovies] = useState([]);
 
-  function handleSearchMovies(searchQuery) {
-    let filterResults;
+  function handleSearchMovies(searchQuery, tumblerStatus) {
     setIsSearching(true);
+
     setLastSearchQuery(searchQuery);
-    localStorage.setItem('searchQuery', JSON.stringify(searchQuery));
+    localStorage.setItem('lastSearchQuery', JSON.stringify(searchQuery));
+    setLastTumblerStatus(tumblerStatus);
+    localStorage.setItem('lastTumblerStatus', JSON.stringify(tumblerStatus));
+
+    let filterResults;
+
     if (!localStorage.movies) {
       moviesApi.getMovies()
-        .then((res)=> {
-          localStorage.setItem('movies', JSON.stringify(res));
-        })
-        .catch((err) => {
-          console.log(err);
-          setSearchFailed(true);
+      .then((res)=> {
+        localStorage.setItem('movies', JSON.stringify(res));
+        filterResults = res.filter((movie) => {
+          return movie.description
+            .toLowerCase()
+            .includes(searchQuery.trim().toLowerCase());
         });
-    }
-    filterResults = JSON.parse(localStorage.getItem('movies')).filter((movie) => {
-      return movie.description // уточнить в Пачке, где лучше искать ключевые слова - в названиях фильмов или в описании
-        .toLowerCase()
-        .includes(searchQuery.trim().toLowerCase());
-    });
-          // if (shortsTumblerOn) {
-          //   const shortMovies = filterResults.filter(
-          //     (movie) => movie.duration <= 40
-          //   );
-          //   setSearchedMovies(shortMovies);
-          //   if (shortMovies.length === 0) {
-          //     setSearchNoResult(true);
-          //   }
-          // } else {
-          //   setSearchedMovies(filterResults);
-          //   if (filterResults.length === 0) {
-          //     setSearchNoResult(true);
-          //   }
-          // }
-    localStorage.setItem("filteredMovies", JSON.stringify(filterResults));
-    setSearchedMovies(filterResults);
-    if (filterResults.length === 0) { setSearchNoResult(true) } else { setSearchNoResult(false) };
+        localStorage.setItem('filteredMovies', JSON.stringify(filterResults));
+        renderMovies(tumblerStatus);
+        setIsSearching(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setSearchFailed(true);
+      });
+    } else { 
+      filterResults = JSON.parse(localStorage.getItem('movies')).filter((movie) => {
+        return movie.description
+          .toLowerCase()
+          .includes(searchQuery.trim().toLowerCase());
+      });
+      localStorage.setItem('filteredMovies', JSON.stringify(filterResults));
+      renderMovies(tumblerStatus);
       setIsSearching(false);
-      setSearchedMovies(filterResults);
+    }
+  }
+
+  function renderMovies(tumbler) {
+    const filteredMovies = JSON.parse(localStorage.getItem('filteredMovies'));
+    if (tumbler) {
+      const shortMovies = filteredMovies.filter((movie) => movie.duration <= 40);
+      setSearchedMovies(shortMovies);
+      if (shortMovies.length === 0) { setSearchNoResult(true) } else { setSearchNoResult(false) };
+    } else {
+      setSearchedMovies(filteredMovies);
+      if (filteredMovies.length === 0) { setSearchNoResult(true) } else { setSearchNoResult(false) };
+    }
+  }
+
+  function handleTumblerChange() {
+    setLastTumblerStatus(!lastTumblerStatus);
+    localStorage.setItem('lastTumblerStatus', JSON.stringify(lastTumblerStatus));
+    renderMovies(lastTumblerStatus);
   }
   
   const [addMoviesBtnActive, setAddMoviesBtnActive] = useState(false);
@@ -83,9 +99,10 @@ function Movies(props) {
       <Header loggedIn = {props.isLoggedIn} />
       <main className="movies">
         <SearchForm
-          lastTumbler={false}
+          lastTumbler={lastTumblerStatus}
           lastSearchQuery={lastSearchQuery}
           onSubmit={handleSearchMovies}
+          onTumblerChange={handleTumblerChange}
         />
         <Preloader
           isSearching={isSearching}

@@ -2,6 +2,7 @@ import React from 'react'
 import './Preloader.css'
 
 const Preloader = (props) => {
+  if (props.searchNoResult || props.searchFailed || props.isSearching) {
   return (
     <div className="preloader">
       <span className={`preloader__message ${props.searchNoResult ? "preloader__message_noResult" : ""}`}>
@@ -15,6 +16,7 @@ const Preloader = (props) => {
       </div>
     </div>
   )
+  }
 };
 
 export default Preloader

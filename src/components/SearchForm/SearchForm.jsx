@@ -3,20 +3,15 @@ import { useEffect, useState } from 'react';
 
 function SearchForm(props) {
   const [searchQuery, setSearchQuery] = useState(props.lastSearchQuery);
-  const [tumblerStatus, setTumblerStatus] = useState(false);
+  const [tumblerStatus, setTumblerStatus] = useState(props.lastTumbler);
 
   function handleChange(e) {
     setSearchQuery(e.target.value);
   }
 
-  function handleTumblerChange() {
-    setTumblerStatus(!tumblerStatus);
-    
-  }
-
   function handleSubmit(e) {
     e.preventDefault();
-    props.onSubmit(searchQuery);
+    props.onSubmit(searchQuery, tumblerStatus);
   }
 
   useEffect(() => {
@@ -45,7 +40,7 @@ function SearchForm(props) {
                 name="tumbler"
                 type="checkbox"
                 checked={tumblerStatus}
-                onChange={handleTumblerChange}
+                onChange={props.onTumblerChange}
                 className="search__checkbox" 
               />
               <span className="search__checkbox-img"/>
