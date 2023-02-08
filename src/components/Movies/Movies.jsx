@@ -70,9 +70,11 @@ function Movies(props) {
   }
 
   function handleTumblerChange() {
-    setLastTumblerStatus(!lastTumblerStatus);
+    setLastTumblerStatus(lastTumblerStatus => {
+      renderMovies(!lastTumblerStatus);
+      return !lastTumblerStatus
+    });
     localStorage.setItem('lastTumblerStatus', JSON.stringify(lastTumblerStatus));
-    renderMovies(lastTumblerStatus);
   }
   
   const [addMoviesBtnActive, setAddMoviesBtnActive] = useState(false);
