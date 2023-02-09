@@ -13,8 +13,49 @@ function Movies(props) {
   const [searchFailed, setSearchFailed] = useState(false);
   const [lastSearchQuery, setLastSearchQuery] = useState(JSON.parse(localStorage.getItem("lastSearchQuery")));
   const [lastTumblerStatus, setLastTumblerStatus] = useState(false);
-  
+
   const [searchedMovies, setSearchedMovies] = useState([]);
+
+  const [moviesNumber, setMoviesNumber] = useState(() => {
+    if (window.innerWidth <= 646) {
+      return 5;
+    } else if (window.innerWidth <= 1015) {
+      return 8;
+    } else if (window.innerWidth > 1015) {
+      return 12;
+    }
+  });
+
+  const [addMoviesBtnActive, setAddMoviesBtnActive] = useState(false);
+  const [moviesToAdd, setMoviesToAdd] = useState(() => {
+    if (window.innerWidth <= 1015) {
+      return 2;
+    } else if (window.innerWidth > 1015) {
+      return 3;
+    }
+  });
+
+  const [width, setWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    window.addEventListener("resize", () =>
+      setTimeout(() => {
+        setWidth(window.innerWidth);
+      }, 1000)
+    );
+  }, []);
+
+  useEffect(() => {
+    if (window.innerWidth <= 646) {
+      setMoviesNumber(5);
+      setMoviesToAdd(2);
+    } else if (window.innerWidth <= 1015) {
+      setMoviesNumber(8);
+      setMoviesToAdd(2);
+    } else if (window.innerWidth > 1015) {
+      setMoviesNumber(12);
+      setMoviesToAdd(3);
+    };
+  }, [width]);
 
   // const [savedMovies, setSavedMovies] = useState([]);
 
@@ -38,7 +79,7 @@ function Movies(props) {
             .includes(searchQuery.trim().toLowerCase());
         });
         localStorage.setItem('filteredMovies', JSON.stringify(filterResults));
-        renderMovies(tumblerStatus);
+        renderMovies(tumblerStatus, moviesNumber);
         setIsSearching(false);
       })
       .catch((err) => {
@@ -52,49 +93,40 @@ function Movies(props) {
           .includes(searchQuery.trim().toLowerCase());
       });
       localStorage.setItem('filteredMovies', JSON.stringify(filterResults));
-      renderMovies(tumblerStatus);
+      renderMovies(tumblerStatus, moviesNumber);
       setIsSearching(false);
     }
   }
 
-  function renderMovies(tumbler) {
+  function renderMovies(tumbler, moviesNumber) {
     const filteredMovies = JSON.parse(localStorage.getItem('filteredMovies'));
     if (tumbler) {
       const shortMovies = filteredMovies.filter((movie) => movie.duration <= 40);
-      setSearchedMovies(shortMovies);
+      if (shortMovies.length > moviesNumber) { setAddMoviesBtnActive(true) } else { setAddMoviesBtnActive(false) };
+      setSearchedMovies(shortMovies.slice(0, moviesNumber));
       if (shortMovies.length === 0) { setSearchNoResult(true) } else { setSearchNoResult(false) };
     } else {
-      setSearchedMovies(filteredMovies);
+      if (filteredMovies.length > moviesNumber) { setAddMoviesBtnActive(true) } else { setAddMoviesBtnActive(false) };
+      setSearchedMovies(filteredMovies.slice(0, moviesNumber));
       if (filteredMovies.length === 0) { setSearchNoResult(true) } else { setSearchNoResult(false) };
     }
   }
 
   function handleTumblerChange() {
     setLastTumblerStatus(lastTumblerStatus => {
-      renderMovies(!lastTumblerStatus);
+      renderMovies(!lastTumblerStatus, moviesNumber);
       return !lastTumblerStatus
     });
     localStorage.setItem('lastTumblerStatus', JSON.stringify(lastTumblerStatus));
   }
-  
-  const [addMoviesBtnActive, setAddMoviesBtnActive] = useState(false);
-  
-  // const [moviesNumber, setMoviesNumber] = useState(() => {
-  //   if (window.innerWidth <= 480) {
-  //     return 5;
-  //   } else if (window.innerWidth <= 768) {
-  //     return 8;
-  //   } else if (window.innerWidth > 768) {
-  //     return 12;
-  //   }
-  // });
-  // const [moviesToAdd, setMoviesToAdd] = useState(() => {
-  //   if (window.innerWidth <= 768) {
-  //     return 2;
-  //   } else if (window.innerWidth > 768) {
-  //     return 3;
-  //   }
-  // });
+
+  function showMoreMovies() {
+    const newMoviesNumber = moviesNumber + moviesToAdd;
+    setMoviesNumber(moviesNumber => {
+      renderMovies(lastTumblerStatus, newMoviesNumber);
+      return newMoviesNumber
+    });
+  }
   
   return (
     <>
@@ -116,7 +148,7 @@ function Movies(props) {
           <button 
             type="button"
             name="more"
-            // onClick={showMoreMovies}
+            onClick={showMoreMovies}
             className={`movies__more-btn ${addMoviesBtnActive ? 'movies__more-btn_active' : ''}`} 
           >Ещё</button>
         </div>
