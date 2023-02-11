@@ -12,8 +12,18 @@ function Movies(props) {
   const [isSearching, setIsSearching] = useState(false);
   const [searchNoResult, setSearchNoResult] = useState(false);
   const [searchFailed, setSearchFailed] = useState(false);
-  const [lastSearchQuery, setLastSearchQuery] = useState(JSON.parse(localStorage.getItem('lastSearchQuery')));
-  const [lastTumblerStatus, setLastTumblerStatus] = useState(JSON.parse(localStorage.getItem('lastTumblerStatus')));
+  const [lastSearchQuery, setLastSearchQuery] = useState(() => {
+    if (localStorage.lastSearchQuery) { 
+      return JSON.parse(localStorage.getItem('lastSearchQuery'));
+    } else { 
+      return '';
+    }});
+  const [lastTumblerStatus, setLastTumblerStatus] = useState(() => {
+    if (localStorage.lastTumblerStatus) { 
+      return JSON.parse(localStorage.getItem('lastTumblerStatus'));
+    } else { 
+      return false;
+    }});
 
   const [searchedMovies, setSearchedMovies] = useState([]);
 
@@ -130,15 +140,32 @@ function Movies(props) {
 
   useEffect(() => {
     if (localStorage.movies) {
-      const renderMoviesNumber = JSON.parse(localStorage.getItem('moviesNumber'));
       setMoviesNumber(moviesNumber => {
-        renderMovies(lastTumblerStatus, renderMoviesNumber);
-        return renderMoviesNumber
+        if (localStorage.moviesNumber) {
+          const renderMoviesNumber = JSON.parse(localStorage.getItem('moviesNumber'));
+          renderMovies(lastTumblerStatus, renderMoviesNumber);
+          return renderMoviesNumber;
+        } else {
+          renderMovies(lastTumblerStatus, moviesNumber);
+          return moviesNumber;
+        }
       })
     }
   }, [lastTumblerStatus, moviesNumber]);
 
-  const [favoriteMovies, setFavoriteMovies] = useState(JSON.parse(localStorage.getItem('savedMovies')));
+  const [favoriteMovies, setFavoriteMovies] = useState(() => {
+    if (localStorage.savedMovies) { 
+      return JSON.parse(localStorage.getItem('savedMovies'));
+    } else { 
+      return [];
+    }});
+  useEffect(() => {
+    mainApi.getMovies()
+      .then((res)=> {
+        localStorage.setItem('savedMovies', JSON.stringify(res));
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   function handleLike(movie) {
     mainApi.createMovie(movie)
@@ -173,13 +200,13 @@ function Movies(props) {
           movies={searchedMovies}
           onLike={handleLike}
           onUnlike={handleUnlike}
-          onClick={showMoreMovies}
         />
         <div className="movies__btn-container">
           <button 
             type="button"
             name="more"
             className={`movies__more-btn ${addMoviesBtnActive ? 'movies__more-btn_active' : ''}`} 
+            onClick={showMoreMovies}
           >Ещё</button>
         </div>
       </main>
