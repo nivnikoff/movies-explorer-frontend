@@ -32,7 +32,7 @@ function MoviesCardList(props) {
               <MoviesCard
                 thisMovie={movie}
                 onDelete={props.onDelete}
-                key={movie.id}
+                key={movie._id}
                 image={movie.image}
                 nameRU={movie.nameRU}
                 duration={movie.duration}

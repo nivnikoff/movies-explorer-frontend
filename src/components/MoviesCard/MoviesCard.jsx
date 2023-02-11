@@ -29,16 +29,12 @@ function MoviesCard(props) {
 
   const likeCheck = () => {
     const savedMovies = JSON.parse(localStorage.getItem('savedMovies'))
-    if (savedMovies) {
-      if (!isFavorite) {
-        const movie = savedMovies.find((favoriteMovie) => favoriteMovie.movieId === thisMovie.id);
-        if (movie) {
-          setIsFavorite(true);
-        } else {
-          setIsFavorite(false);
-        }
-      }
-    }
+    const movie = savedMovies.find((favoriteMovie) => favoriteMovie.movieId === thisMovie.id);
+    if (movie) {
+      setIsFavorite(true);
+    } else {
+      setIsFavorite(false);
+    } 
   };
   useEffect(() => {
     likeCheck();

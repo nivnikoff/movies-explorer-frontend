@@ -8,15 +8,7 @@ import Footer from '../Footer/Footer';
 import { mainApi } from '../../utils/MainApi';
 
 function SavedMovies(props) {
-  useEffect(() => {
-    mainApi.getMovies()
-      .then((res)=> {
-        localStorage.setItem('savedMovies', JSON.stringify(res));
-        renderMovies(lastFavoriteSearchQuery);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
+  const [favoriteMovies, setFavoriteMovies] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
   const [searchNoResult, setSearchNoResult] = useState(false);
   const [lastFavoriteSearchQuery, setLastFavoriteSearchQuery] = useState(() => {
@@ -29,6 +21,7 @@ function SavedMovies(props) {
     if (localStorage.lastTumblerStatus) { 
       return JSON.parse(localStorage.getItem('lastFavoriteTumblerStatus'));
     } else { 
+      localStorage.setItem('lastFavoriteTumblerStatus', JSON.stringify(false));
       return false;
     }});
 
@@ -87,8 +80,26 @@ function SavedMovies(props) {
   }
 
   function handleDelete(movie) {
-    
+    const movieId = movie._id;
+    mainApi.deleteMovie(movieId)
+      .then(() => {
+        const updatedFavoriteMovies = favoriteMovies.filter((favoriteMovie) => favoriteMovie._id !== movie._id);
+        localStorage.setItem('savedMovies', JSON.stringify(updatedFavoriteMovies));
+        setFavoriteMovies(updatedFavoriteMovies);
+        renderMovies(lastFavoriteTumblerStatus);
+      })
+      .catch((err) => console.log(err));
   }
+
+  useEffect(() => {
+    mainApi.getMovies()
+      .then((res)=> {
+        localStorage.setItem('savedMovies', JSON.stringify(res));
+        setSearchedMovies(res);
+        setFavoriteMovies(res);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <>

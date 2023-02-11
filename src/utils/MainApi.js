@@ -98,7 +98,7 @@ class MainApi {
     }).then(this._checkServerResponse);
   }
 
-  deleteMovies(movieId) {
+  deleteMovie(movieId) {
     return fetch(`${this._url}/movies/${movieId}`, {
       method: 'DELETE',
       headers: {

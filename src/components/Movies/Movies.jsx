@@ -22,6 +22,7 @@ function Movies(props) {
     if (localStorage.lastTumblerStatus) { 
       return JSON.parse(localStorage.getItem('lastTumblerStatus'));
     } else { 
+      localStorage.setItem('lastTumblerStatus', JSON.stringify(false));
       return false;
     }});
 
@@ -122,11 +123,18 @@ function Movies(props) {
   }
 
   function handleTumblerChange() {
-    setLastTumblerStatus(lastTumblerStatus => {
-      renderMovies(!lastTumblerStatus, moviesNumber);
-      localStorage.setItem('lastTumblerStatus', JSON.stringify(!lastTumblerStatus));
-      return !lastTumblerStatus
-    });
+    if (localStorage.filteredMovies) {
+      setLastTumblerStatus(lastTumblerStatus => {
+        renderMovies(!lastTumblerStatus, moviesNumber);
+        localStorage.setItem('lastTumblerStatus', JSON.stringify(!lastTumblerStatus));
+        return !lastTumblerStatus
+      });
+    } else {
+      setLastTumblerStatus(lastTumblerStatus => {
+        localStorage.setItem('lastTumblerStatus', JSON.stringify(!lastTumblerStatus));
+        return !lastTumblerStatus
+      });
+    }
   }
 
   function showMoreMovies() {
@@ -178,7 +186,15 @@ function Movies(props) {
   }
 
   function handleUnlike(movie) {
-    
+    const movieToDelete = favoriteMovies.find((favoriteMovie) => favoriteMovie.movieId === movie.id);
+    const movieId = movieToDelete._id;
+    mainApi.deleteMovie(movieId)
+      .then(() => {
+        const updatedFavoriteMovies = favoriteMovies.filter((favoriteMovie) => favoriteMovie.movieId !== movie.id);
+        setFavoriteMovies(updatedFavoriteMovies);
+        localStorage.setItem('savedMovies', JSON.stringify(updatedFavoriteMovies));
+      })
+      .catch((err) => console.log(err));
   }
   
   return (
