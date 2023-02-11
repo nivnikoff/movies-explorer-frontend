@@ -6,13 +6,14 @@ import Preloader from '../Preloader/Preloader';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 import { moviesApi } from '../../utils/MoviesApi';
+import { mainApi } from '../../utils/MainApi';
 
 function Movies(props) {
   const [isSearching, setIsSearching] = useState(false);
   const [searchNoResult, setSearchNoResult] = useState(false);
   const [searchFailed, setSearchFailed] = useState(false);
-  const [lastSearchQuery, setLastSearchQuery] = useState(JSON.parse(localStorage.getItem("lastSearchQuery")));
-  const [lastTumblerStatus, setLastTumblerStatus] = useState(false);
+  const [lastSearchQuery, setLastSearchQuery] = useState(JSON.parse(localStorage.getItem('lastSearchQuery')));
+  const [lastTumblerStatus, setLastTumblerStatus] = useState(JSON.parse(localStorage.getItem('lastTumblerStatus')));
 
   const [searchedMovies, setSearchedMovies] = useState([]);
 
@@ -37,7 +38,7 @@ function Movies(props) {
 
   const [width, setWidth] = useState(window.innerWidth);
   useEffect(() => {
-    window.addEventListener("resize", () =>
+    window.addEventListener('resize', () =>
       setTimeout(() => {
         setWidth(window.innerWidth);
       }, 1000)
@@ -56,8 +57,6 @@ function Movies(props) {
       setMoviesToAdd(3);
     };
   }, [width]);
-
-  // const [savedMovies, setSavedMovies] = useState([]);
 
   function handleSearchMovies(searchQuery, tumblerStatus) {
     setIsSearching(true);
@@ -115,17 +114,44 @@ function Movies(props) {
   function handleTumblerChange() {
     setLastTumblerStatus(lastTumblerStatus => {
       renderMovies(!lastTumblerStatus, moviesNumber);
+      localStorage.setItem('lastTumblerStatus', JSON.stringify(!lastTumblerStatus));
       return !lastTumblerStatus
     });
-    localStorage.setItem('lastTumblerStatus', JSON.stringify(lastTumblerStatus));
   }
 
   function showMoreMovies() {
     const newMoviesNumber = moviesNumber + moviesToAdd;
     setMoviesNumber(moviesNumber => {
       renderMovies(lastTumblerStatus, newMoviesNumber);
+      localStorage.setItem('moviesNumber', JSON.stringify(newMoviesNumber));
       return newMoviesNumber
     });
+  }
+
+  useEffect(() => {
+    if (localStorage.movies) {
+      const renderMoviesNumber = JSON.parse(localStorage.getItem('moviesNumber'));
+      setMoviesNumber(moviesNumber => {
+        renderMovies(lastTumblerStatus, renderMoviesNumber);
+        return renderMoviesNumber
+      })
+    }
+  }, [lastTumblerStatus, moviesNumber]);
+
+  const [favoriteMovies, setFavoriteMovies] = useState(JSON.parse(localStorage.getItem('savedMovies')));
+
+  function handleLike(movie) {
+    mainApi.createMovie(movie)
+      .then((favoriteMovie) => {
+        const updatedFavoriteMovies = [...favoriteMovies, favoriteMovie];
+        setFavoriteMovies(updatedFavoriteMovies);
+        localStorage.setItem('savedMovies', JSON.stringify(updatedFavoriteMovies));
+      })
+      .catch((err) => console.log(err));
+  }
+
+  function handleUnlike(movie) {
+    
   }
   
   return (
@@ -143,12 +169,16 @@ function Movies(props) {
           searchNoResult={searchNoResult}
           searchFailed={searchFailed}
         /> 
-        <MoviesCardList movies={searchedMovies}/>
+        <MoviesCardList 
+          movies={searchedMovies}
+          onLike={handleLike}
+          onUnlike={handleUnlike}
+          onClick={showMoreMovies}
+        />
         <div className="movies__btn-container">
           <button 
             type="button"
             name="more"
-            onClick={showMoreMovies}
             className={`movies__more-btn ${addMoviesBtnActive ? 'movies__more-btn_active' : ''}`} 
           >Ещё</button>
         </div>

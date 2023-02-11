@@ -63,6 +63,51 @@ class MainApi {
     })
       .then(this._checkServerResponse)
    }
+
+  createMovie(movie) {
+    return fetch(`${this._url}/movies`,{
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        country: movie.country || "No data",
+        director: movie.director || "No data",
+        duration: movie.duration || 0,
+        year: movie.year || 0,
+        description: movie.description || "No data",
+        image: `https://api.nomoreparties.co/${movie.image.url}`,
+        trailerLink: movie.trailerLink,
+        thumbnail: `https://api.nomoreparties.co/${movie.image.formats.thumbnail.url}`,
+        movieId: movie.id,
+        nameRU: movie.nameRU,
+        nameEN: movie.nameEN || "No data",
+      })
+    })
+      .then(this._checkServerResponse)
+  }
+
+  getMovies() {
+    return fetch(`${this._url}/movies`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Content-Type': 'application/json'
+      },
+    }).then(this._checkServerResponse);
+  }
+
+  deleteMovies(movieId) {
+    return fetch(`${this._url}/movies/${movieId}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Content-Type': 'application/json'
+      },
+    }).then(this._checkServerResponse);
+  }
+
 }
 
 export const mainApi = new MainApi({

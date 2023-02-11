@@ -63,7 +63,7 @@ function App() {
   }
   // Обработка выхода
   function handleLogOut() {
-    localStorage.removeItem('jwt');
+    localStorage.clear();
     setIsLoggedIn(false);
     setCurrentUser({
       _id: '',
