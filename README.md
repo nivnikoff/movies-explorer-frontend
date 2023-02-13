@@ -18,3 +18,5 @@
 * Git.
 
 Ссылка на макет в Figma: [https://www.figma.com/file/lCglmg8KpOA1hL2Vw6dZJ9/Diploma-nivnikoff?node-id=932%3A4450&t=N9REP63sKil246NL-1]
+
+Ссылка пул-реквест: [https://github.com/nivnikoff/movies-explorer-frontend/pull/2]
