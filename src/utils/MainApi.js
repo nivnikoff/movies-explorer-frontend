@@ -20,7 +20,7 @@ class MainApi {
         name: user.name
       }),
     })
-    .then(this._checkServerResponse)
+    .then((res) => this._checkServerResponse(res))
   };
 
   login(user) {
@@ -32,7 +32,7 @@ class MainApi {
         password: user.password, 
       }),
     })
-    .then(this._checkServerResponse)
+    .then((res) => this._checkServerResponse(res))
     .then((data) => {
       if (data.token) {
         localStorage.setItem('jwt', data.token);
@@ -49,7 +49,7 @@ class MainApi {
         'Content-Type': 'application/json'
       },
     })
-      .then(this._checkServerResponse)
+    .then((res) => this._checkServerResponse(res))
   };
 
   editUser(name, email) {
@@ -61,7 +61,7 @@ class MainApi {
       },
       body: JSON.stringify({ name, email })
     })
-      .then(this._checkServerResponse)
+    .then((res) => this._checkServerResponse(res))
    }
 
   createMovie(movie) {
@@ -85,7 +85,7 @@ class MainApi {
         nameEN: movie.nameEN || "No data",
       })
     })
-      .then(this._checkServerResponse)
+    .then((res) => this._checkServerResponse(res))
   }
 
   getMovies() {
@@ -95,7 +95,8 @@ class MainApi {
         'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
         'Content-Type': 'application/json'
       },
-    }).then(this._checkServerResponse);
+    })
+    .then((res) => this._checkServerResponse(res))
   }
 
   deleteMovie(movieId) {
@@ -105,7 +106,8 @@ class MainApi {
         'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
         'Content-Type': 'application/json'
       },
-    }).then(this._checkServerResponse);
+    })
+    .then((res) => this._checkServerResponse(res))
   }
 
 }

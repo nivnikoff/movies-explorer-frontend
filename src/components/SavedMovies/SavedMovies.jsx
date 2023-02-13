@@ -21,7 +21,7 @@ function SavedMovies(props) {
     if (localStorage.lastTumblerStatus) { 
       return JSON.parse(localStorage.getItem('lastFavoriteTumblerStatus'));
     } else { 
-      localStorage.setItem('lastFavoriteTumblerStatus', JSON.stringify(false));
+      localStorage.setItem('lastFavoriteTumblerStatus', false);
       return false;
     }});
 

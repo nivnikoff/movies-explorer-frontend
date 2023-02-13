@@ -22,7 +22,7 @@ function Movies(props) {
     if (localStorage.lastTumblerStatus) { 
       return JSON.parse(localStorage.getItem('lastTumblerStatus'));
     } else { 
-      localStorage.setItem('lastTumblerStatus', JSON.stringify(false));
+      localStorage.setItem('lastTumblerStatus', false);
       return false;
     }});
 

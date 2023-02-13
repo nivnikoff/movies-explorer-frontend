@@ -15,7 +15,7 @@ import { mainApi } from '../../utils/MainApi';
 function App() {
   // Состояние пользователя
   const [currentUser, setCurrentUser] = useState({});
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(JSON.parse(localStorage.getItem('isLoggedIn')));
   // Состояния редактирования профиля
   const [isEditSuccessful, setIsEditSuccessful] = useState(false);
   const [editMessageSuccess, setEditMessageSuccess] = useState('');
@@ -24,13 +24,13 @@ function App() {
   const history = useHistory();
   // Проверка токена
   const handleCheckToken = useCallback(() => {
+    setIsLoggedIn(localStorage.getItem('isLoggedIn'));
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
       mainApi.checkToken(jwt)
         .then((res) => {
           const { _id, name, email } = res;
           setCurrentUser({ _id, name, email });
-          setIsLoggedIn(true);
         })
         .catch((err) => {
           console.log(err);
@@ -55,6 +55,7 @@ function App() {
       .then((res) => {
         if (res.token) {
           localStorage.setItem('jwt', res.token);
+          localStorage.setItem('isLoggedIn', true);
           handleCheckToken();
           history.push('/movies');
         }
