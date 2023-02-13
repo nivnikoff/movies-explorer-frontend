@@ -113,6 +113,6 @@ class MainApi {
 }
 
 export const mainApi = new MainApi({
-//   url: 'api.nivnikoff-diploma.nomoredomains.club',
-  url: 'http://localhost:3000'
+  url: 'https://api.nivnikoff-diploma.nomoredomains.club',
+  // url: 'http://localhost:3000'
 })
