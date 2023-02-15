@@ -1,4 +1,4 @@
-import { Route, Switch, useHistory } from 'react-router-dom';
+import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
 import React, { useState, useCallback, useEffect } from 'react';
 import './App.css';
 import Main from '../Main/Main';
@@ -122,10 +122,10 @@ function App() {
             editMessageFail={editMessageFail}
           />
           <Route path="/signup">
-            <Register onRegister={handleRegister}/>
+            {!isLoggedIn ? <Register onRegister={handleRegister}/> : <Redirect to="/" />}
           </Route>
           <Route path="/signin">
-            <Login onLogin={handleLogin}/>
+            {!isLoggedIn ? <Login onLogin={handleLogin}/> : <Redirect to="/" />}
           </Route>
           <Route path="*">
             <PageNotFound/>

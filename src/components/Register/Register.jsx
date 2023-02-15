@@ -52,6 +52,7 @@ function Register(props) {
             name="userEmail"
             type="email"
             placeholder="Введите email"
+            pattern='^.+@.+\..+$'
             value={values.email}
             onChange={handleChange}
             className={`register__form-input ${errors.userEmail ? 'register__form-input_error' : ''}`} 

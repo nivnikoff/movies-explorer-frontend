@@ -11,19 +11,8 @@ function SavedMovies(props) {
   const [favoriteMovies, setFavoriteMovies] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
   const [searchNoResult, setSearchNoResult] = useState(false);
-  const [lastFavoriteSearchQuery, setLastFavoriteSearchQuery] = useState(() => {
-    if (localStorage.lastSearchQuery) { 
-      return JSON.parse(localStorage.getItem('lastFavoriteSearchQuery'));
-    } else { 
-      return '';
-    }});
-  const [lastFavoriteTumblerStatus, setLastFavoriteTumblerStatus] = useState(() => {
-    if (localStorage.lastTumblerStatus) { 
-      return JSON.parse(localStorage.getItem('lastFavoriteTumblerStatus'));
-    } else { 
-      localStorage.setItem('lastFavoriteTumblerStatus', false);
-      return false;
-    }});
+  const [lastFavoriteSearchQuery, setLastFavoriteSearchQuery] = useState('');
+  const [lastFavoriteTumblerStatus, setLastFavoriteTumblerStatus] = useState(false);
 
   const [searchedMovies, setSearchedMovies] = useState([]);
 
@@ -31,14 +20,12 @@ function SavedMovies(props) {
     setIsSearching(true);
 
     setLastFavoriteSearchQuery(searchQuery);
-    localStorage.setItem('lastFavoriteSearchQuery', JSON.stringify(searchQuery));
     setLastFavoriteTumblerStatus(tumblerStatus);
-    localStorage.setItem('lastFavoriteTumblerStatus', JSON.stringify(tumblerStatus));
 
     let filterResults;
 
     filterResults = JSON.parse(localStorage.getItem('savedMovies')).filter((movie) => {
-      return movie.description
+      return movie.nameRU
         .toLowerCase()
         .includes(searchQuery.trim().toLowerCase());
     });
@@ -74,7 +61,6 @@ function SavedMovies(props) {
   function handleTumblerChange() {
     setLastFavoriteTumblerStatus(lastFavoriteTumblerStatus => {
       renderMovies(!lastFavoriteTumblerStatus);
-      localStorage.setItem('lastFavoriteTumblerStatus', JSON.stringify(!lastFavoriteTumblerStatus));
       return !lastFavoriteTumblerStatus
     });
   }

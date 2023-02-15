@@ -34,6 +34,7 @@ function Login(props) {
             name="userEmail"
             type="email"
             placeholder="Введите email"
+            pattern='^.+@.+\..+$'
             value={values.email}
             onChange={handleChange}
             className={`login__form-input ${errors.userEmail ? 'login__form-input_error' : ''}`} 

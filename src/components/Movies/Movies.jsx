@@ -84,7 +84,7 @@ function Movies(props) {
       .then((res)=> {
         localStorage.setItem('movies', JSON.stringify(res));
         filterResults = res.filter((movie) => {
-          return movie.description
+          return movie.nameRU
             .toLowerCase()
             .includes(searchQuery.trim().toLowerCase());
         });
@@ -98,7 +98,7 @@ function Movies(props) {
       });
     } else { 
       filterResults = JSON.parse(localStorage.getItem('movies')).filter((movie) => {
-        return movie.description
+        return movie.nameRU
           .toLowerCase()
           .includes(searchQuery.trim().toLowerCase());
       });
@@ -109,6 +109,7 @@ function Movies(props) {
   }
 
   function renderMovies(tumbler, moviesNumber) {
+    if (localStorage.filteredMovies) {
     const filteredMovies = JSON.parse(localStorage.getItem('filteredMovies'));
     if (tumbler) {
       const shortMovies = filteredMovies.filter((movie) => movie.duration <= 40);
@@ -120,6 +121,7 @@ function Movies(props) {
       setSearchedMovies(filteredMovies.slice(0, moviesNumber));
       if (filteredMovies.length === 0) { setSearchNoResult(true) } else { setSearchNoResult(false) };
     }
+  }
   }
 
   function handleTumblerChange() {

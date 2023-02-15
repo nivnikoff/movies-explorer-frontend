@@ -54,6 +54,7 @@ function Profile(props) {
               name="userEmail"
               type="email"
               placeholder="Введите email"
+              pattern='^.+@.+\..+$'
               value={values.userEmail || ""}
               onChange={handleChange}
               className="profile__input"
