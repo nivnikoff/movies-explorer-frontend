@@ -6,6 +6,7 @@ import Preloader from '../Preloader/Preloader';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 import { mainApi } from '../../utils/MainApi';
+import { SHORTMOVIE } from '../../utils/constants';
 
 function SavedMovies(props) {
   const [favoriteMovies, setFavoriteMovies] = useState([]);
@@ -38,7 +39,7 @@ function SavedMovies(props) {
     if (localStorage.filteredFavoriteMovies) {
       const filteredFavoriteMovies = JSON.parse(localStorage.getItem('filteredFavoriteMovies'));
       if (tumbler) {
-        const shortFilteredFavoriteMovies = filteredFavoriteMovies.filter((movie) => movie.duration <= 40);
+        const shortFilteredFavoriteMovies = filteredFavoriteMovies.filter((movie) => movie.duration <= SHORTMOVIE);
         setSearchedMovies(shortFilteredFavoriteMovies);
         if (shortFilteredFavoriteMovies.length === 0) { setSearchNoResult(true) } else { setSearchNoResult(false) };
       } else {
@@ -48,7 +49,7 @@ function SavedMovies(props) {
     } else {
       const favoriteMovies = JSON.parse(localStorage.getItem('savedMovies'));
       if (tumbler) {
-        const shortFavoriteMovies = favoriteMovies.filter((movie) => movie.duration <= 40);
+        const shortFavoriteMovies = favoriteMovies.filter((movie) => movie.duration <= SHORTMOVIE);
         setSearchedMovies(shortFavoriteMovies);
         if (shortFavoriteMovies.length === 0) { setSearchNoResult(true) } else { setSearchNoResult(false) };
       } else {
@@ -83,6 +84,7 @@ function SavedMovies(props) {
         localStorage.setItem('savedMovies', JSON.stringify(res));
         setSearchedMovies(res);
         setFavoriteMovies(res);
+        localStorage.removeItem('filteredFavoriteMovies');
       })
       .catch((err) => console.log(err));
   }, []);

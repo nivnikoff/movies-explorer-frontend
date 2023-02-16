@@ -103,7 +103,7 @@
 
 .register__footer {
   width: 100%;
-  padding: 69px 0 70px;
+  padding: 40px 0 70px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -113,7 +113,7 @@
 
 @media screen and (max-width: 400px) {
   .register__footer {
-    padding: 157px 0 30px;
+    padding: 127px 0 30px;
     gap: 14px;
   }
 }
@@ -202,4 +202,29 @@
 
 .register__link:hover {
   opacity: 0.6;
+}
+
+.register__footer-message {
+  display: block;
+  min-height: 16px;
+  width: 410px;
+  padding-bottom: 16px;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+}
+
+@media screen and (max-width: 400px) {
+  .register__footer-message {
+    width: 260px;
+  }
+}
+
+.register__footer-message_success {
+  color: #3DDC84;
+}
+
+.register__footer-message_fail {
+  color: #EE3465;
 }

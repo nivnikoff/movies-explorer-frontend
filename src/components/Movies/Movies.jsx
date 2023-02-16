@@ -7,6 +7,7 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 import { moviesApi } from '../../utils/MoviesApi';
 import { mainApi } from '../../utils/MainApi';
+import { SHORTMOVIE, MOVIES_GRID } from '../../utils/constants';
 
 function Movies(props) {
   const [isSearching, setIsSearching] = useState(false);
@@ -28,22 +29,23 @@ function Movies(props) {
 
   const [searchedMovies, setSearchedMovies] = useState([]);
 
+  const { desktop, tablet, mobile } = MOVIES_GRID;
   const [moviesNumber, setMoviesNumber] = useState(() => {
-    if (window.innerWidth <= 646) {
-      return 5;
-    } else if (window.innerWidth <= 1015) {
-      return 8;
-    } else if (window.innerWidth > 1015) {
-      return 12;
+    if (window.innerWidth <= mobile.width) {
+      return mobile.moviesNumber;
+    } else if (window.innerWidth <= tablet.width) {
+      return tablet.moviesNumber;
+    } else if (window.innerWidth > tablet.width) {
+      return desktop.moviesNumber;
     }
   });
 
   const [addMoviesBtnActive, setAddMoviesBtnActive] = useState(false);
   const [moviesToAdd, setMoviesToAdd] = useState(() => {
-    if (window.innerWidth <= 1015) {
-      return 2;
-    } else if (window.innerWidth > 1015) {
-      return 3;
+    if (window.innerWidth <= tablet.width) {
+      return tablet.moviesToAdd;
+    } else if (window.innerWidth > tablet.width) {
+      return desktop.moviesToAdd;
     }
   });
 
@@ -57,15 +59,15 @@ function Movies(props) {
   }, []);
 
   useEffect(() => {
-    if (window.innerWidth <= 646) {
-      setMoviesNumber(5);
-      setMoviesToAdd(2);
-    } else if (window.innerWidth <= 1015) {
-      setMoviesNumber(8);
-      setMoviesToAdd(2);
-    } else if (window.innerWidth > 1015) {
-      setMoviesNumber(12);
-      setMoviesToAdd(3);
+    if (window.innerWidth <= mobile.width) {
+      setMoviesNumber(mobile.moviesNumber);
+      setMoviesToAdd(mobile.moviesToAdd);
+    } else if (window.innerWidth <= tablet.width) {
+      setMoviesNumber(tablet.moviesNumber);
+      setMoviesToAdd(tablet.moviesToAdd);
+    } else if (window.innerWidth > tablet.width) {
+      setMoviesNumber(desktop.moviesNumber);
+      setMoviesToAdd(desktop.moviesToAdd);
     };
   }, [width]);
 
@@ -112,7 +114,7 @@ function Movies(props) {
     if (localStorage.filteredMovies) {
     const filteredMovies = JSON.parse(localStorage.getItem('filteredMovies'));
     if (tumbler) {
-      const shortMovies = filteredMovies.filter((movie) => movie.duration <= 40);
+      const shortMovies = filteredMovies.filter((movie) => movie.duration <= SHORTMOVIE);
       if (shortMovies.length > moviesNumber) { setAddMoviesBtnActive(true) } else { setAddMoviesBtnActive(false) };
       setSearchedMovies(shortMovies.slice(0, moviesNumber));
       if (shortMovies.length === 0) { setSearchNoResult(true) } else { setSearchNoResult(false) };

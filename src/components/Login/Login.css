@@ -103,7 +103,7 @@
 
 .login__footer {
   width: 100%;
-  padding: 179px 0 70px;
+  padding: 147px 0 70px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -113,7 +113,7 @@
 
 @media screen and (max-width: 400px) {
   .login__footer {
-    padding: 267px 0 30px;
+    padding: 237px 0 30px;
     gap: 14px;
   }
 }
@@ -203,4 +203,29 @@
 
 .login__link:hover {
   opacity: 0.6;
+}
+
+.login__footer-message {
+  display: block;
+  min-height: 16px;
+  width: 410px;
+  padding-bottom: 16px;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+}
+
+@media screen and (max-width: 400px) {
+  .login__footer-message {
+    width: 260px;
+  }
+}
+
+.login__footer-message_success {
+  color: #3DDC84;
+}
+
+.login__footer-message_fail {
+  color: #EE3465;
 }

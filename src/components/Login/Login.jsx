@@ -37,7 +37,8 @@ function Login(props) {
             pattern='^.+@.+\..+$'
             value={values.email}
             onChange={handleChange}
-            className={`login__form-input ${errors.userEmail ? 'login__form-input_error' : ''}`} 
+            className={`login__form-input ${errors.userEmail ? 'login__form-input_error' : ''}`}
+            readOnly={props.isLoading} 
             required 
           />
           <span className="login__form-error">{errors.userEmail}</span>
@@ -51,14 +52,27 @@ function Login(props) {
             minLength="8"
             value={values.password}
             onChange={handleChange}
-            className={`login__form-input ${errors.userPassword ? 'login__form-input_error' : ''}`} 
+            className={`login__form-input ${errors.userPassword ? 'login__form-input_error' : ''}`}
+            readOnly={props.isLoading} 
             required 
           />
           <span className="login__form-error">{errors.userPassword}</span>
         </fieldset>
       
       <div className="login__footer">
-      <button 
+        <span
+          className={
+            `login__footer-message 
+            ${props.isLoginSuccessful 
+              ? `login__footer-message_success` 
+              : `login__footer-message_fail`
+            }`}
+          >{props.isLoginSuccessful
+            ? `${props.loginMessageSuccess}`
+            : `${props.loginMessageFail}`
+          }
+        </span>
+        <button 
           className="login__btn" 
           type="submit"
           disabled={!isValid}

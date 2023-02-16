@@ -55,7 +55,8 @@ function Register(props) {
             pattern='^.+@.+\..+$'
             value={values.email}
             onChange={handleChange}
-            className={`register__form-input ${errors.userEmail ? 'register__form-input_error' : ''}`} 
+            className={`register__form-input ${errors.userEmail ? 'register__form-input_error' : ''}`}
+            readOnly={props.isLoading} 
             required 
           />
           <span className="register__form-error">{errors.userEmail}</span>
@@ -69,13 +70,26 @@ function Register(props) {
             minLength="8"
             value={values.password}
             onChange={(e) => handleChange(e)}
-            className={`register__form-input ${errors.userPassword ? 'register__form-input_error' : ''}`} 
+            className={`register__form-input ${errors.userPassword ? 'register__form-input_error' : ''}`}
+            readOnly={props.isLoading} 
             required 
           />
           <span className="register__form-error">{errors.userPassword}</span>
         </fieldset>
       
       <div className="register__footer">
+        <span
+          className={
+            `register__footer-message 
+            ${props.isRegisterSuccessful 
+              ? `register__footer-message_success` 
+              : `register__footer-message_fail`
+            }`}
+          >{props.isRegisterSuccessful
+            ? `${props.registerMessageSuccess}`
+            : `${props.registerMessageFail}`
+          }
+        </span>
         <button 
           className="register__btn" 
           type="submit"
