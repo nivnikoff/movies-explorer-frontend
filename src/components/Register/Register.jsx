@@ -56,7 +56,7 @@ function Register(props) {
             value={values.email}
             onChange={handleChange}
             className={`register__form-input ${errors.userEmail ? 'register__form-input_error' : ''}`}
-            readOnly={props.isLoading} 
+            readonly={props.isLoading} 
             required 
           />
           <span className="register__form-error">{errors.userEmail}</span>
@@ -71,7 +71,7 @@ function Register(props) {
             value={values.password}
             onChange={(e) => handleChange(e)}
             className={`register__form-input ${errors.userPassword ? 'register__form-input_error' : ''}`}
-            readOnly={props.isLoading} 
+            readonly={props.isLoading} 
             required 
           />
           <span className="register__form-error">{errors.userPassword}</span>

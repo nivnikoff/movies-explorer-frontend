@@ -38,7 +38,7 @@ function Login(props) {
             value={values.email}
             onChange={handleChange}
             className={`login__form-input ${errors.userEmail ? 'login__form-input_error' : ''}`}
-            readOnly={props.isLoading} 
+            readonly={props.isLoading} 
             required 
           />
           <span className="login__form-error">{errors.userEmail}</span>
@@ -53,7 +53,7 @@ function Login(props) {
             value={values.password}
             onChange={handleChange}
             className={`login__form-input ${errors.userPassword ? 'login__form-input_error' : ''}`}
-            readOnly={props.isLoading} 
+            readonly={props.isLoading} 
             required 
           />
           <span className="login__form-error">{errors.userPassword}</span>
