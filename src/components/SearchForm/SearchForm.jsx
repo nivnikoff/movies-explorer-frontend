@@ -16,8 +16,11 @@ function SearchForm(props) {
 
   useEffect(() => {
     setTumblerStatus(props.lastTumbler);
+  }, [props.lastTumbler]);
+
+  useEffect(() => {
     setSearchQuery(props.lastSearchQuery);
-  }, [props.lastTumbler, props.lastSearchQuery]);
+  }, [props.lastSearchQuery]);
 
   return (
     <section className="search">

@@ -44,7 +44,7 @@ function Profile(props) {
               pattern='^(?!\s)[A-Za-zА-Яа-я\-\s]+$'
               onChange={handleChange}
               className="profile__input" 
-              readonly={props.isLoading}
+              readOnly={props.isLoading}
               required 
             />
           </fieldset>
@@ -59,7 +59,7 @@ function Profile(props) {
               value={values.userEmail || ""}
               onChange={handleChange}
               className="profile__input"
-              readonly={props.isLoading}
+              readOnly={props.isLoading}
               required 
             />
           </fieldset>
