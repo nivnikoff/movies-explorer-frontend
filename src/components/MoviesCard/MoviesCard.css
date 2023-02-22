@@ -1,6 +1,7 @@
 .movie {
   max-width: 364px;
   max-height: 281px;
+  width: 100%;
   padding: 0;
   margin: 0;
   display: flex;
@@ -12,7 +13,15 @@
 
 .movie__img {
   width: 100%;
+  height: 187px;
   border-radius: 6px 6px 0px 0px;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 400px) {
+  .movie__img {
+    height: 168px;
+  }
 }
 
 .movie__info-container {

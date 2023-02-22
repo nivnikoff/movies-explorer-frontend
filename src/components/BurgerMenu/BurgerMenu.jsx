@@ -12,10 +12,10 @@ function BurgerMenu() {
       <button className="burger__btn-menu" type="button" onClick={handleToggleMenu}/>
       <div className={`burger__container ${showMenu ? 'burger__container_visible' : ''}`}>
         <div className="burger__sidebar">
-        <button className="burger__btn-close" type="button" onClick={handleToggleMenu}></button>
+        <button className="burger__btn-close" type="button" onClick={handleToggleMenu}/>
           <nav className="burger__list">
             <div className="burger__links">
-              <Link to="/" className="burger__link">Главная</Link>
+              <Link to="/" className={`burger__link ${pathname === '/' ? 'burger__link_current' : ''}`}>Главная</Link>
               <Link to="/movies" className={`burger__link ${pathname === '/movies' ? 'burger__link_current' : ''}`}>Фильмы</Link>
               <Link to="/saved-movies" className={`burger__link ${pathname === '/saved-movies' ? 'burger__link_current' : ''}`}>Сохранённые фильмы</Link>
             </div>
