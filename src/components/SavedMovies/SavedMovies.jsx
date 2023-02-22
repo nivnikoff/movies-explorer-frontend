@@ -9,14 +9,16 @@ import { mainApi } from '../../utils/MainApi';
 import { SHORTMOVIE } from '../../utils/constants';
 
 function SavedMovies(props) {
+  // Состояние любимых фильмов
   const [favoriteMovies, setFavoriteMovies] = useState([]);
+  // Состояния поиска
   const [isSearching, setIsSearching] = useState(false);
   const [searchNoResult, setSearchNoResult] = useState(false);
   const [lastFavoriteSearchQuery, setLastFavoriteSearchQuery] = useState('');
   const [lastFavoriteTumblerStatus, setLastFavoriteTumblerStatus] = useState(false);
-
+  // Состояние отображаемых фильмов
   const [searchedMovies, setSearchedMovies] = useState([]);
-
+  // Обработчик поиска
   function handleSearchMovies(searchQuery, tumblerStatus) {
     setIsSearching(true);
 
@@ -34,7 +36,7 @@ function SavedMovies(props) {
     renderMovies(tumblerStatus);
     setIsSearching(false);
   }
-
+  // Отображение карточек фильмов
   function renderMovies(tumbler) {
     if (localStorage.filteredFavoriteMovies) {
       const filteredFavoriteMovies = JSON.parse(localStorage.getItem('filteredFavoriteMovies'));
@@ -58,14 +60,14 @@ function SavedMovies(props) {
       }
     }
   }
-
+  // Обработчик переключения тумблера
   function handleTumblerChange() {
     setLastFavoriteTumblerStatus(lastFavoriteTumblerStatus => {
       renderMovies(!lastFavoriteTumblerStatus);
       return !lastFavoriteTumblerStatus
     });
   }
-
+  // Обработчик удаления фильма
   function handleDelete(movie) {
     const movieId = movie._id;
     mainApi.deleteMovie(movieId)
@@ -77,7 +79,7 @@ function SavedMovies(props) {
       })
       .catch((err) => console.log(err));
   }
-
+  // Загрузка информации о любимых фильмах
   useEffect(() => {
     mainApi.getMovies()
       .then((res)=> {

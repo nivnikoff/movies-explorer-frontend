@@ -10,9 +10,11 @@ import { mainApi } from '../../utils/MainApi';
 import { SHORTMOVIE, MOVIES_GRID } from '../../utils/constants';
 
 function Movies(props) {
+  // Состояния поиска
   const [isSearching, setIsSearching] = useState(false);
   const [searchNoResult, setSearchNoResult] = useState(false);
   const [searchFailed, setSearchFailed] = useState(false);
+  // Состояния инпутов поисковой формы
   const [lastSearchQuery, setLastSearchQuery] = useState(() => {
     if (localStorage.lastSearchQuery) { 
       return JSON.parse(localStorage.getItem('lastSearchQuery'));
@@ -26,9 +28,9 @@ function Movies(props) {
       localStorage.setItem('lastTumblerStatus', false);
       return false;
     }});
-
+  // Состояние отображаемых фильмов
   const [searchedMovies, setSearchedMovies] = useState([]);
-
+  // Состояния разметки контейнера фильмов
   const { desktop, tablet, mobile } = MOVIES_GRID;
   const [moviesNumber, setMoviesNumber] = useState(() => {
     if (window.innerWidth <= mobile.width) {
@@ -39,7 +41,7 @@ function Movies(props) {
       return desktop.moviesNumber;
     }
   });
-
+  // Состояния кнопки Ещё
   const [addMoviesBtnActive, setAddMoviesBtnActive] = useState(false);
   const [moviesToAdd, setMoviesToAdd] = useState(() => {
     if (window.innerWidth <= tablet.width) {
@@ -48,7 +50,7 @@ function Movies(props) {
       return desktop.moviesToAdd;
     }
   });
-
+  // Перестройка разметки в зависимости от ширины экрана
   const [width, setWidth] = useState(window.innerWidth);
   useEffect(() => {
     window.addEventListener('resize', () =>
@@ -70,7 +72,7 @@ function Movies(props) {
       setMoviesToAdd(desktop.moviesToAdd);
     };
   }, [width]);
-
+  // Обработчик поиска
   function handleSearchMovies(searchQuery, tumblerStatus) {
     setIsSearching(true);
 
@@ -109,7 +111,7 @@ function Movies(props) {
       setIsSearching(false);
     }
   }
-
+  // Отображение карточек фильмов
   function renderMovies(tumbler, moviesNumber) {
     if (localStorage.filteredMovies) {
     const filteredMovies = JSON.parse(localStorage.getItem('filteredMovies'));
@@ -125,7 +127,7 @@ function Movies(props) {
     }
   }
   }
-
+  // Обработчик переключения тумблера
   function handleTumblerChange() {
     if (localStorage.filteredMovies) {
       setLastTumblerStatus(lastTumblerStatus => {
@@ -140,7 +142,7 @@ function Movies(props) {
       });
     }
   }
-
+  // Обработчик кнопки Ещё
   function showMoreMovies() {
     const newMoviesNumber = moviesNumber + moviesToAdd;
     setMoviesNumber(moviesNumber => {
@@ -149,7 +151,7 @@ function Movies(props) {
       return newMoviesNumber
     });
   }
-
+  // Отображение фильмов при повторном входе
   useEffect(() => {
     if (localStorage.movies) {
       setMoviesNumber(moviesNumber => {
@@ -164,7 +166,7 @@ function Movies(props) {
       })
     }
   }, [lastTumblerStatus, moviesNumber]);
-
+  // Загрузка информации о любимых фильмах
   const [favoriteMovies, setFavoriteMovies] = useState(() => {
     if (localStorage.savedMovies) { 
       return JSON.parse(localStorage.getItem('savedMovies'));
@@ -178,7 +180,7 @@ function Movies(props) {
       })
       .catch((err) => console.log(err));
   }, []);
-
+  // Обработчик постановки лайка
   function handleLike(movie) {
     mainApi.createMovie(movie)
       .then((favoriteMovie) => {
@@ -188,7 +190,7 @@ function Movies(props) {
       })
       .catch((err) => console.log(err));
   }
-
+  // Обработчик снятия лайка
   function handleUnlike(movie) {
     const movieToDelete = favoriteMovies.find((favoriteMovie) => favoriteMovie.movieId === movie.id);
     const movieId = movieToDelete._id;
